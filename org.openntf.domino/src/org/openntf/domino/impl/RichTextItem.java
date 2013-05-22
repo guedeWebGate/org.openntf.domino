@@ -40,6 +40,9 @@ public class RichTextItem extends Item implements org.openntf.domino.RichTextIte
 		super(delegate, parent);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Item#getDelegate()
+	 */
 	@Override
 	protected lotus.domino.RichTextItem getDelegate() {
 		return (lotus.domino.RichTextItem) super.getDelegate();
@@ -649,6 +652,9 @@ public class RichTextItem extends Item implements org.openntf.domino.RichTextIte
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Item#markDirty()
+	 */
 	@Override
 	void markDirty() {
 		getAncestorDocument().markDirty();

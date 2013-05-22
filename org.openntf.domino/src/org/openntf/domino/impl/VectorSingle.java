@@ -33,6 +33,7 @@ import org.openntf.domino.iterators.VectorIterator;
  */
 public class VectorSingle<E> extends Vector<E> implements Collection<E> {
 
+	/** The value_. */
 	private E value_;
 
 	/** The Constant serialVersionUID. */
@@ -45,6 +46,12 @@ public class VectorSingle<E> extends Vector<E> implements Collection<E> {
 
 	}
 
+	/**
+	 * Instantiates a new vector single.
+	 * 
+	 * @param value
+	 *            the value
+	 */
 	public VectorSingle(E value) {
 		value_ = value;
 	}

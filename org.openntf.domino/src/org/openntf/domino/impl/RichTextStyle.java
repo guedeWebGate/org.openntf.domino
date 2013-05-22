@@ -213,6 +213,9 @@ public class RichTextStyle extends Base<org.openntf.domino.RichTextStyle, lotus.
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.RichTextStyle#setBold(org.openntf.domino.RichTextStyle.BoldStyle)
+	 */
 	public void setBold(BoldStyle ISBN) {
 		try {
 			getDelegate().setBold(ISBN.getValue());

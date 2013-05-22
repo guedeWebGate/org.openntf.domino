@@ -19,6 +19,7 @@ import java.util.Vector;
 
 import org.openntf.domino.types.DocumentDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface RichTextItem.
  */

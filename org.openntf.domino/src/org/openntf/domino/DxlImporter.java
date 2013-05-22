@@ -17,27 +17,62 @@ package org.openntf.domino;
 
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface DxlImporter.
  */
 public interface DxlImporter extends Base<lotus.domino.DxlImporter>, lotus.domino.DxlImporter, org.openntf.domino.ext.DxlImporter,
 		SessionDescendant {
 
+	/**
+	 * The Enum DocumentImportOption.
+	 */
 	public static enum DocumentImportOption {
-		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), CREATE(DxlImporter.DXLIMPORTOPTION_CREATE), REPLACE_ELSE_CREATE(
-				DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_CREATE), REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE), UPDATE_ELSE_CREATE(
-				DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_CREATE), UPDATE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_IGNORE);
+		
+		/** The ignore. */
+		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), 
+ /** The create. */
+ CREATE(DxlImporter.DXLIMPORTOPTION_CREATE), 
+ /** The replace else create. */
+ REPLACE_ELSE_CREATE(
+				DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_CREATE), 
+ /** The replace else ignore. */
+ REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE), 
+ /** The update else create. */
+ UPDATE_ELSE_CREATE(
+				DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_CREATE), 
+ /** The update else ignore. */
+ UPDATE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_IGNORE);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new document import option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private DocumentImportOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the document import option
+		 */
 		public static DocumentImportOption valueOf(int value) {
 			for (DocumentImportOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -48,20 +83,50 @@ public interface DxlImporter extends Base<lotus.domino.DxlImporter>, lotus.domin
 		}
 	}
 
+	/**
+	 * The Enum DesignImportOption.
+	 */
 	public static enum DesignImportOption {
-		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), CREATE(DxlImporter.DXLIMPORTOPTION_CREATE), REPLACE_ELSE_CREATE(
-				DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_CREATE), REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE);
+		
+		/** The ignore. */
+		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), 
+ /** The create. */
+ CREATE(DxlImporter.DXLIMPORTOPTION_CREATE), 
+ /** The replace else create. */
+ REPLACE_ELSE_CREATE(
+				DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_CREATE), 
+ /** The replace else ignore. */
+ REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new design import option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private DesignImportOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the design import option
+		 */
 		public static DesignImportOption valueOf(int value) {
 			for (DesignImportOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -72,20 +137,50 @@ public interface DxlImporter extends Base<lotus.domino.DxlImporter>, lotus.domin
 		}
 	}
 
+	/**
+	 * The Enum AclImportOption.
+	 */
 	public static enum AclImportOption {
-		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE), UPDATE_ELSE_CREATE(
-				DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_CREATE), UPDATE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_IGNORE);
+		
+		/** The ignore. */
+		IGNORE(DxlImporter.DXLIMPORTOPTION_IGNORE), 
+ /** The replace else ignore. */
+ REPLACE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_REPLACE_ELSE_IGNORE), 
+ /** The update else create. */
+ UPDATE_ELSE_CREATE(
+				DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_CREATE), 
+ /** The update else ignore. */
+ UPDATE_ELSE_IGNORE(DxlImporter.DXLIMPORTOPTION_UPDATE_ELSE_IGNORE);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new acl import option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private AclImportOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the acl import option
+		 */
 		public static AclImportOption valueOf(int value) {
 			for (AclImportOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -96,20 +191,48 @@ public interface DxlImporter extends Base<lotus.domino.DxlImporter>, lotus.domin
 		}
 	}
 
+	/**
+	 * The Enum InputValidationOption.
+	 */
 	public static enum InputValidationOption {
-		NEVER(DxlImporter.DXLVALIDATIONOPTION_VALIDATE_NEVER), ALWAYS(DxlImporter.DXLVALIDATIONOPTION_VALIDATE_ALWAYS), AUTO(
+		
+		/** The never. */
+		NEVER(DxlImporter.DXLVALIDATIONOPTION_VALIDATE_NEVER), 
+ /** The always. */
+ ALWAYS(DxlImporter.DXLVALIDATIONOPTION_VALIDATE_ALWAYS), 
+ /** The auto. */
+ AUTO(
 				DxlImporter.DXLVALIDATIONOPTION_VALIDATE_AUTO);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new input validation option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private InputValidationOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the input validation option
+		 */
 		public static InputValidationOption valueOf(int value) {
 			for (InputValidationOption opt : values()) {
 				if (opt.getValue() == value) {

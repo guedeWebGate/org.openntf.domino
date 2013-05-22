@@ -32,6 +32,7 @@ import org.openntf.domino.utils.Factory;
 public class RichTextNavigator extends Base<org.openntf.domino.RichTextNavigator, lotus.domino.RichTextNavigator> implements
 		org.openntf.domino.RichTextNavigator {
 
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(RichTextNavigator.class.getName());
 
 	/**
@@ -358,6 +359,11 @@ public class RichTextNavigator extends Base<org.openntf.domino.RichTextNavigator
 		}
 	}
 
+	/**
+	 * Gets the parent database.
+	 * 
+	 * @return the parent database
+	 */
 	public org.openntf.domino.Database getParentDatabase() {
 		return getAncestorDocument().getParentDatabase();
 	}

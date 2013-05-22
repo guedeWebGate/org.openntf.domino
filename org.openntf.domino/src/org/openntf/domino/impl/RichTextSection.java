@@ -31,6 +31,8 @@ import org.openntf.domino.utils.Factory;
  */
 public class RichTextSection extends Base<org.openntf.domino.RichTextSection, lotus.domino.RichTextSection> implements
 		org.openntf.domino.RichTextSection {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(RichTextSection.class.getName());
 
 	/**
@@ -60,6 +62,9 @@ public class RichTextSection extends Base<org.openntf.domino.RichTextSection, lo
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Base#getParent()
+	 */
 	@Override
 	public RichTextItem getParent() {
 		return (RichTextItem) getParent();
@@ -185,6 +190,9 @@ public class RichTextSection extends Base<org.openntf.domino.RichTextSection, lo
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getAncestorDocument().markDirty();
 	}

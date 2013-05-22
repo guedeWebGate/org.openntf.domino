@@ -31,6 +31,8 @@ import org.openntf.domino.utils.Factory;
  * The Class ViewEntry.
  */
 public class ViewEntry extends Base<org.openntf.domino.ViewEntry, lotus.domino.ViewEntry> implements org.openntf.domino.ViewEntry {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(ViewEntry.class.getName());
 
 	/**

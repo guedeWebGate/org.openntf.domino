@@ -22,32 +22,93 @@ import org.openntf.domino.annotations.Legacy;
 import org.openntf.domino.types.Resurrectable;
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Database.
  */
 public interface Database extends lotus.domino.Database, org.openntf.domino.Base<lotus.domino.Database>, org.openntf.domino.ext.Database,
 		Map<String, Document>, Resurrectable, SessionDescendant {
 
+	/**
+	 * The Enum DBOption.
+	 */
 	public static enum DBOption {
-		LZ1(Database.DBOPT_LZ1), LZCOMPRESSION(Database.DBOPT_LZCOMPRESSION), MAINTAINLASTACCESSED(Database.DBOPT_MAINTAINLASTACCESSED), MOREFIELDS(
-				Database.DBOPT_MOREFIELDS), NOHEADLINEMONITORS(Database.DBOPT_NOHEADLINEMONITORS), NOOVERWRITE(Database.DBOPT_NOOVERWRITE), NORESPONSEINFO(
-				Database.DBOPT_NORESPONSEINFO), NOTRANSACTIONLOGGING(Database.DBOPT_NOTRANSACTIONLOGGING), NOUNREAD(Database.DBOPT_NOUNREAD), OPTIMIZAION(
-				Database.DBOPT_OPTIMIZATION), REPLICATEUNREADMARKSTOANY(Database.DBOPT_REPLICATEUNREADMARKSTOANY), REPLICATEUNREADMARKSTOCLUSTER(
-				Database.DBOPT_REPLICATEUNREADMARKSTOCLUSTER), REPLICATEUNREADMARKSNEVER(Database.DBOPT_REPLICATEUNREADMARKSNEVER), SOFTDELETE(
-				Database.DBOPT_SOFTDELETE), COMPRESSDESIGN(Database.DBOPT_COMPRESSDESIGN), COMPRESSDOCUMENTS(
-				Database.DBOPT_COMPRESSDOCUMENTS), OUTOFOFFICEENABLED(Database.DBOPT_OUTOFOFFICEENABLED), NOSIMPLESEARCH(
-				Database.DBOPT_NOSIMPLESEARCH), USEDAOS(Database.DBOPT_USEDAOS);
+		
+		/** The L z1. */
+		LZ1(Database.DBOPT_LZ1), 
+ /** The lzcompression. */
+ LZCOMPRESSION(Database.DBOPT_LZCOMPRESSION), 
+ /** The maintainlastaccessed. */
+ MAINTAINLASTACCESSED(Database.DBOPT_MAINTAINLASTACCESSED), 
+ /** The morefields. */
+ MOREFIELDS(
+				Database.DBOPT_MOREFIELDS), 
+ /** The noheadlinemonitors. */
+ NOHEADLINEMONITORS(Database.DBOPT_NOHEADLINEMONITORS), 
+ /** The nooverwrite. */
+ NOOVERWRITE(Database.DBOPT_NOOVERWRITE), 
+ /** The noresponseinfo. */
+ NORESPONSEINFO(
+				Database.DBOPT_NORESPONSEINFO), 
+ /** The notransactionlogging. */
+ NOTRANSACTIONLOGGING(Database.DBOPT_NOTRANSACTIONLOGGING), 
+ /** The nounread. */
+ NOUNREAD(Database.DBOPT_NOUNREAD), 
+ /** The optimizaion. */
+ OPTIMIZAION(
+				Database.DBOPT_OPTIMIZATION), 
+ /** The replicateunreadmarkstoany. */
+ REPLICATEUNREADMARKSTOANY(Database.DBOPT_REPLICATEUNREADMARKSTOANY), 
+ /** The replicateunreadmarkstocluster. */
+ REPLICATEUNREADMARKSTOCLUSTER(
+				Database.DBOPT_REPLICATEUNREADMARKSTOCLUSTER), 
+ /** The replicateunreadmarksnever. */
+ REPLICATEUNREADMARKSNEVER(Database.DBOPT_REPLICATEUNREADMARKSNEVER), 
+ /** The softdelete. */
+ SOFTDELETE(
+				Database.DBOPT_SOFTDELETE), 
+ /** The compressdesign. */
+ COMPRESSDESIGN(Database.DBOPT_COMPRESSDESIGN), 
+ /** The compressdocuments. */
+ COMPRESSDOCUMENTS(
+				Database.DBOPT_COMPRESSDOCUMENTS), 
+ /** The outofofficeenabled. */
+ OUTOFOFFICEENABLED(Database.DBOPT_OUTOFOFFICEENABLED), 
+ /** The nosimplesearch. */
+ NOSIMPLESEARCH(
+				Database.DBOPT_NOSIMPLESEARCH), 
+ /** The usedaos. */
+ USEDAOS(Database.DBOPT_USEDAOS);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new dB option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private DBOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the dB option
+		 */
 		public static DBOption valueOf(int value) {
 			for (DBOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -58,21 +119,63 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum SignDocType.
+	 */
 	public static enum SignDocType {
-		ACL(Database.DBSIGN_DOC_ACL), AGENT(Database.DBSIGN_DOC_AGENT), ALL(Database.DBSIGN_DOC_ALL), DATA(Database.DBSIGN_DOC_DATA), FORM(
-				Database.DBSIGN_DOC_FORM), HELP(Database.DBSIGN_DOC_HELP), ICON(Database.DBSIGN_DOC_ICON), REPLFORMULA(
-				Database.DBSIGN_DOC_REPLFORMULA), SHAREDFIELD(Database.DBSIGN_DOC_SHAREDFIELD), VIEW(Database.DBSIGN_DOC_VIEW);
+		
+		/** The acl. */
+		ACL(Database.DBSIGN_DOC_ACL), 
+ /** The agent. */
+ AGENT(Database.DBSIGN_DOC_AGENT), 
+ /** The all. */
+ ALL(Database.DBSIGN_DOC_ALL), 
+ /** The data. */
+ DATA(Database.DBSIGN_DOC_DATA), 
+ /** The form. */
+ FORM(
+				Database.DBSIGN_DOC_FORM), 
+ /** The help. */
+ HELP(Database.DBSIGN_DOC_HELP), 
+ /** The icon. */
+ ICON(Database.DBSIGN_DOC_ICON), 
+ /** The replformula. */
+ REPLFORMULA(
+				Database.DBSIGN_DOC_REPLFORMULA), 
+ /** The sharedfield. */
+ SHAREDFIELD(Database.DBSIGN_DOC_SHAREDFIELD), 
+ /** The view. */
+ VIEW(Database.DBSIGN_DOC_VIEW);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new sign doc type.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private SignDocType(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the sign doc type
+		 */
 		public static SignDocType valueOf(int value) {
 			for (SignDocType opt : values()) {
 				if (opt.getValue() == value) {
@@ -83,28 +186,92 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum CompactOption.
+	 */
 	public static enum CompactOption {
-		ARCHIVE_DELETE_COMPACT(Database.CMPC_ARCHIVE_DELETE_COMPACT), ARCHIVE_DELETE_ONLY(Database.CMPC_ARCHIVE_DELETE_ONLY), CHK_OVERLAP(
-				Database.CMPC_CHK_OVERLAP), COPYSTYLE(Database.CMPC_COPYSTYLE), DISABLE_DOCTBLBIT_OPTMZN(
-				Database.CMPC_DISABLE_DOCTBLBIT_OPTMZN), DISABLE_LARGE_UNKTBL(Database.CMPC_DISABLE_LARGE_UNKTBL), DISABLE_RESPONSE_INFO(
-				Database.CMPC_DISABLE_RESPONSE_INFO), DISABLE_TRANSACTIONLOGGING(Database.CMPC_DISABLE_TRANSACTIONLOGGING), DISABLE_UNREAD_MARKS(
-				Database.CMPC_DISABLE_UNREAD_MARKS), DISCARD_VIEW_INDICIES(Database.CMPC_DISCARD_VIEW_INDICES), ENABLE_DOCTBLBIT_OPTMZN(
-				Database.CMPC_ENABLE_DOCTBLBIT_OPTMZN), ENABLE_LARGE_UNKTBL(Database.CMPC_ENABLE_LARGE_UNKTBL), ENABLE_RESPONSE_INFO(
-				Database.CMPC_ENABLE_RESPONSE_INFO), ENABLE_TRANSACTIONLOGGING(Database.CMPC_ENABLE_TRANSACTIONLOGGING), ENABLE_UNREAD_MARKS(
-				Database.CMPC_ENABLE_UNREAD_MARKS), IGNORE_COPYSTYLE_ERRORS(Database.CMPC_IGNORE_COPYSTYLE_ERRORS), MAX_4GB(
-				Database.CMPC_MAX_4GB), NO_LOCKOUT(Database.CMPC_NO_LOCKOUT), RECOVER_INPLACE(Database.CMPC_RECOVER_INPLACE), RECOVER_REDUCE_INPLACE(
-				Database.CMPC_RECOVER_REDUCE_INPLACE), REVERT_FILEFORMAT(Database.CMPC_REVERT_FILEFORMAT);
+		
+		/** The archive delete compact. */
+		ARCHIVE_DELETE_COMPACT(Database.CMPC_ARCHIVE_DELETE_COMPACT), 
+ /** The archive delete only. */
+ ARCHIVE_DELETE_ONLY(Database.CMPC_ARCHIVE_DELETE_ONLY), 
+ /** The chk overlap. */
+ CHK_OVERLAP(
+				Database.CMPC_CHK_OVERLAP), 
+ /** The copystyle. */
+ COPYSTYLE(Database.CMPC_COPYSTYLE), 
+ /** The disable doctblbit optmzn. */
+ DISABLE_DOCTBLBIT_OPTMZN(
+				Database.CMPC_DISABLE_DOCTBLBIT_OPTMZN), 
+ /** The disable large unktbl. */
+ DISABLE_LARGE_UNKTBL(Database.CMPC_DISABLE_LARGE_UNKTBL), 
+ /** The disable response info. */
+ DISABLE_RESPONSE_INFO(
+				Database.CMPC_DISABLE_RESPONSE_INFO), 
+ /** The disable transactionlogging. */
+ DISABLE_TRANSACTIONLOGGING(Database.CMPC_DISABLE_TRANSACTIONLOGGING), 
+ /** The disable unread marks. */
+ DISABLE_UNREAD_MARKS(
+				Database.CMPC_DISABLE_UNREAD_MARKS), 
+ /** The discard view indicies. */
+ DISCARD_VIEW_INDICIES(Database.CMPC_DISCARD_VIEW_INDICES), 
+ /** The enable doctblbit optmzn. */
+ ENABLE_DOCTBLBIT_OPTMZN(
+				Database.CMPC_ENABLE_DOCTBLBIT_OPTMZN), 
+ /** The enable large unktbl. */
+ ENABLE_LARGE_UNKTBL(Database.CMPC_ENABLE_LARGE_UNKTBL), 
+ /** The enable response info. */
+ ENABLE_RESPONSE_INFO(
+				Database.CMPC_ENABLE_RESPONSE_INFO), 
+ /** The enable transactionlogging. */
+ ENABLE_TRANSACTIONLOGGING(Database.CMPC_ENABLE_TRANSACTIONLOGGING), 
+ /** The enable unread marks. */
+ ENABLE_UNREAD_MARKS(
+				Database.CMPC_ENABLE_UNREAD_MARKS), 
+ /** The ignore copystyle errors. */
+ IGNORE_COPYSTYLE_ERRORS(Database.CMPC_IGNORE_COPYSTYLE_ERRORS), 
+ /** The MA x_4 gb. */
+ MAX_4GB(
+				Database.CMPC_MAX_4GB), 
+ /** The no lockout. */
+ NO_LOCKOUT(Database.CMPC_NO_LOCKOUT), 
+ /** The recover inplace. */
+ RECOVER_INPLACE(Database.CMPC_RECOVER_INPLACE), 
+ /** The recover reduce inplace. */
+ RECOVER_REDUCE_INPLACE(
+				Database.CMPC_RECOVER_REDUCE_INPLACE), 
+ /** The revert fileformat. */
+ REVERT_FILEFORMAT(Database.CMPC_REVERT_FILEFORMAT);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new compact option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private CompactOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the compact option
+		 */
 		public static CompactOption valueOf(int value) {
 			for (CompactOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -115,21 +282,53 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTIndexOption.
+	 */
 	public static enum FTIndexOption {
-		ALL_BREAKS(Database.FTINDEX_ALL_BREAKS), ATTACHED_BIN_FILES(Database.FTINDEX_ATTACHED_BIN_FILES), ATTACHED_FILES(
-				Database.FTINDEX_ATTACHED_FILES), CASE_SENSITIVE(Database.FTINDEX_CASE_SENSITIVE), ENCRYPTED_FIELDS(
+		
+		/** The all breaks. */
+		ALL_BREAKS(Database.FTINDEX_ALL_BREAKS), 
+ /** The attached bin files. */
+ ATTACHED_BIN_FILES(Database.FTINDEX_ATTACHED_BIN_FILES), 
+ /** The attached files. */
+ ATTACHED_FILES(
+				Database.FTINDEX_ATTACHED_FILES), 
+ /** The case sensitive. */
+ CASE_SENSITIVE(Database.FTINDEX_CASE_SENSITIVE), 
+ /** The encrypted fields. */
+ ENCRYPTED_FIELDS(
 				Database.FTINDEX_ENCRYPTED_FIELDS);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT index option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTIndexOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT index option
+		 */
 		public static FTIndexOption valueOf(int value) {
 			for (FTIndexOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -140,20 +339,56 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FixupOption.
+	 */
 	public static enum FixupOption {
-		INCREMENTAL(Database.FIXUP_INCREMENTAL), NODELETE(Database.FIXUP_NODELETE), NOVIEWS(Database.FIXUP_NOVIEWS), QUICK(
-				Database.FIXUP_QUICK), REVERT(Database.FIXUP_REVERT), TXLOGGED(Database.FIXUP_TXLOGGED), VERIFY(Database.FIXUP_VERIFY);
+		
+		/** The incremental. */
+		INCREMENTAL(Database.FIXUP_INCREMENTAL), 
+ /** The nodelete. */
+ NODELETE(Database.FIXUP_NODELETE), 
+ /** The noviews. */
+ NOVIEWS(Database.FIXUP_NOVIEWS), 
+ /** The quick. */
+ QUICK(
+				Database.FIXUP_QUICK), 
+ /** The revert. */
+ REVERT(Database.FIXUP_REVERT), 
+ /** The txlogged. */
+ TXLOGGED(Database.FIXUP_TXLOGGED), 
+ /** The verify. */
+ VERIFY(Database.FIXUP_VERIFY);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fixup option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FixupOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fixup option
+		 */
 		public static FixupOption valueOf(int value) {
 			for (FixupOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -164,20 +399,50 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTIndexFrequency.
+	 */
 	public static enum FTIndexFrequency {
-		DAILY(Database.FTINDEX_DAILY), HOURLY(Database.FTINDEX_HOURLY), IMMEDIATE(Database.FTINDEX_IMMEDIATE), SCHEDULED(
+		
+		/** The daily. */
+		DAILY(Database.FTINDEX_DAILY), 
+ /** The hourly. */
+ HOURLY(Database.FTINDEX_HOURLY), 
+ /** The immediate. */
+ IMMEDIATE(Database.FTINDEX_IMMEDIATE), 
+ /** The scheduled. */
+ SCHEDULED(
 				Database.FTINDEX_SCHEDULED);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT index frequency.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTIndexFrequency(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT index frequency
+		 */
 		public static FTIndexFrequency valueOf(int value) {
 			for (FTIndexFrequency opt : values()) {
 				if (opt.getValue() == value) {
@@ -188,19 +453,47 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTDomainSortOption.
+	 */
 	public static enum FTDomainSortOption {
-		SCORES(Database.FT_SCORES), DATE_DES(Database.FT_DATE_DES), DATE_ASC(Database.FT_DATE_ASC);
+		
+		/** The scores. */
+		SCORES(Database.FT_SCORES), 
+ /** The date des. */
+ DATE_DES(Database.FT_DATE_DES), 
+ /** The date asc. */
+ DATE_ASC(Database.FT_DATE_ASC);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT domain sort option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTDomainSortOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT domain sort option
+		 */
 		public static FTDomainSortOption valueOf(int value) {
 			for (FTDomainSortOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -211,19 +504,49 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTDomainSearchOption.
+	 */
 	public static enum FTDomainSearchOption {
-		DATABASE(Database.FT_DATABASE), FILESYSTEM(Database.FT_FILESYSTEM), FUZZY(Database.FT_FUZZY), STEMS(Database.FT_STEMS);
+		
+		/** The database. */
+		DATABASE(Database.FT_DATABASE), 
+ /** The filesystem. */
+ FILESYSTEM(Database.FT_FILESYSTEM), 
+ /** The fuzzy. */
+ FUZZY(Database.FT_FUZZY), 
+ /** The stems. */
+ STEMS(Database.FT_STEMS);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT domain search option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTDomainSearchOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT domain search option
+		 */
 		public static FTDomainSearchOption valueOf(int value) {
 			for (FTDomainSearchOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -234,20 +557,52 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTSortOption.
+	 */
 	public static enum FTSortOption {
-		SCORES(Database.FT_SCORES), DATE_DES(Database.FT_DATE_DES), DATE_ASC(Database.FT_DATE_ASC), DATECREATED_DES(
-				Database.FT_DATECREATED_DES), DATECREATED_ASC(Database.FT_DATECREATED_ASC);
+		
+		/** The scores. */
+		SCORES(Database.FT_SCORES), 
+ /** The date des. */
+ DATE_DES(Database.FT_DATE_DES), 
+ /** The date asc. */
+ DATE_ASC(Database.FT_DATE_ASC), 
+ /** The datecreated des. */
+ DATECREATED_DES(
+				Database.FT_DATECREATED_DES), 
+ /** The datecreated asc. */
+ DATECREATED_ASC(Database.FT_DATECREATED_ASC);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT sort option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTSortOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT sort option
+		 */
 		public static FTSortOption valueOf(int value) {
 			for (FTSortOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -258,19 +613,45 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum FTSearchOption.
+	 */
 	public static enum FTSearchOption {
-		FUZZY(Database.FT_FUZZY), STEMS(Database.FT_STEMS);
+		
+		/** The fuzzy. */
+		FUZZY(Database.FT_FUZZY), 
+ /** The stems. */
+ STEMS(Database.FT_STEMS);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new fT search option.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private FTSearchOption(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the fT search option
+		 */
 		public static FTSearchOption valueOf(int value) {
 			for (FTSearchOption opt : values()) {
 				if (opt.getValue() == value) {
@@ -281,21 +662,63 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum ModifiedDocClass.
+	 */
 	public static enum ModifiedDocClass {
-		ACL(Database.DBMOD_DOC_ACL), AGENT(Database.DBMOD_DOC_AGENT), ALL(Database.DBMOD_DOC_ALL), DATA(Database.DBMOD_DOC_DATA), FORM(
-				Database.DBMOD_DOC_FORM), HELP(Database.DBMOD_DOC_HELP), ICON(Database.DBMOD_DOC_ICON), REPLFORMULA(
-				Database.DBMOD_DOC_REPLFORMULA), SHAREDFIELD(Database.DBMOD_DOC_SHAREDFIELD), VIEW(Database.DBMOD_DOC_VIEW);
+		
+		/** The acl. */
+		ACL(Database.DBMOD_DOC_ACL), 
+ /** The agent. */
+ AGENT(Database.DBMOD_DOC_AGENT), 
+ /** The all. */
+ ALL(Database.DBMOD_DOC_ALL), 
+ /** The data. */
+ DATA(Database.DBMOD_DOC_DATA), 
+ /** The form. */
+ FORM(
+				Database.DBMOD_DOC_FORM), 
+ /** The help. */
+ HELP(Database.DBMOD_DOC_HELP), 
+ /** The icon. */
+ ICON(Database.DBMOD_DOC_ICON), 
+ /** The replformula. */
+ REPLFORMULA(
+				Database.DBMOD_DOC_REPLFORMULA), 
+ /** The sharedfield. */
+ SHAREDFIELD(Database.DBMOD_DOC_SHAREDFIELD), 
+ /** The view. */
+ VIEW(Database.DBMOD_DOC_VIEW);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new modified doc class.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private ModifiedDocClass(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the modified doc class
+		 */
 		public static ModifiedDocClass valueOf(int value) {
 			for (ModifiedDocClass opt : values()) {
 				if (opt.getValue() == value) {
@@ -306,23 +729,71 @@ public interface Database extends lotus.domino.Database, org.openntf.domino.Base
 		}
 	}
 
+	/**
+	 * The Enum Type.
+	 */
 	public static enum Type {
-		ADDR_BOOK(Database.DBTYPE_ADDR_BOOK), IMAP_SVR_PROXY(Database.DBTYPE_IMAP_SVR_PROXY), LIBRARY(Database.DBTYPE_LIBRARY), LIGHT_ADDR_BOOK(
-				Database.DBTYPE_LIGHT_ADDR_BOOK), MAILBOX(Database.DBTYPE_MAILBOX), MAILFILE(Database.DBTYPE_MAILFILE), MULTIDB_SRCH(
-				Database.DBTYPE_MULTIDB_SRCH), NEWS_SVR_PROXY(Database.DBTYPE_NEWS_SVR_PROXY), PERS_JOURNAL(Database.DBTYPE_PERS_JOURNAL), PORTFOLIO(
-				Database.DBTYPE_PORTFOLIO), STANDARD(Database.DBTYPE_STANDARD), SUBSCRIPTIONS(Database.DBTYPE_SUBSCRIPTIONS), WEB_APP(
+		
+		/** The addr book. */
+		ADDR_BOOK(Database.DBTYPE_ADDR_BOOK), 
+ /** The imap svr proxy. */
+ IMAP_SVR_PROXY(Database.DBTYPE_IMAP_SVR_PROXY), 
+ /** The library. */
+ LIBRARY(Database.DBTYPE_LIBRARY), 
+ /** The light addr book. */
+ LIGHT_ADDR_BOOK(
+				Database.DBTYPE_LIGHT_ADDR_BOOK), 
+ /** The mailbox. */
+ MAILBOX(Database.DBTYPE_MAILBOX), 
+ /** The mailfile. */
+ MAILFILE(Database.DBTYPE_MAILFILE), 
+ /** The multidb srch. */
+ MULTIDB_SRCH(
+				Database.DBTYPE_MULTIDB_SRCH), 
+ /** The news svr proxy. */
+ NEWS_SVR_PROXY(Database.DBTYPE_NEWS_SVR_PROXY), 
+ /** The pers journal. */
+ PERS_JOURNAL(Database.DBTYPE_PERS_JOURNAL), 
+ /** The portfolio. */
+ PORTFOLIO(
+				Database.DBTYPE_PORTFOLIO), 
+ /** The standard. */
+ STANDARD(Database.DBTYPE_STANDARD), 
+ /** The subscriptions. */
+ SUBSCRIPTIONS(Database.DBTYPE_SUBSCRIPTIONS), 
+ /** The web app. */
+ WEB_APP(
 				Database.DBTYPE_WEB_APP);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new type.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private Type(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}
 
+		/**
+		 * Value of.
+		 * 
+		 * @param value
+		 *            the value
+		 * @return the type
+		 */
 		public static Type valueOf(int value) {
 			for (Type opt : values()) {
 				if (opt.getValue() == value) {

@@ -547,6 +547,9 @@ public class ACLEntry extends Base<org.openntf.domino.ACLEntry, lotus.domino.ACL
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.ACLEntry#setLevel(org.openntf.domino.ACL.Level)
+	 */
 	@Override
 	public void setLevel(ACL.Level level) {
 		this.setLevel(level.getValue());
@@ -650,11 +653,17 @@ public class ACLEntry extends Base<org.openntf.domino.ACLEntry, lotus.domino.ACL
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.types.DatabaseDescendant#getAncestorDatabase()
+	 */
 	@Override
 	public Database getAncestorDatabase() {
 		return getParent().getParent();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.types.SessionDescendant#getAncestorSession()
+	 */
 	@Override
 	public Session getAncestorSession() {
 		return getAncestorDatabase().getParent();

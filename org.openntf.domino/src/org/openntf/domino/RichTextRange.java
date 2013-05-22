@@ -17,6 +17,7 @@ package org.openntf.domino;
 
 import org.openntf.domino.types.DocumentDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface RichTextRange.
  */

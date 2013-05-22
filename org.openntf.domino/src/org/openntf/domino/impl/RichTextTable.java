@@ -33,6 +33,8 @@ import org.openntf.domino.utils.Factory;
  */
 public class RichTextTable extends Base<org.openntf.domino.RichTextTable, lotus.domino.RichTextTable> implements
 		org.openntf.domino.RichTextTable {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(RichTextTable.class.getName());
 
 	/**
@@ -137,6 +139,9 @@ public class RichTextTable extends Base<org.openntf.domino.RichTextTable, lotus.
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Base#getParent()
+	 */
 	@Override
 	public RichTextItem getParent() {
 		return (RichTextItem) super.getParent();
@@ -341,6 +346,9 @@ public class RichTextTable extends Base<org.openntf.domino.RichTextTable, lotus.
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getAncestorDocument().markDirty();
 	}

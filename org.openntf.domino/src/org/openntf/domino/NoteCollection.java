@@ -17,14 +17,74 @@ package org.openntf.domino;
 
 import org.openntf.domino.types.DatabaseDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface NoteCollection.
  */
 public interface NoteCollection extends Base<lotus.domino.NoteCollection>, lotus.domino.NoteCollection,
 		org.openntf.domino.ext.NoteCollection, Iterable<String>, DatabaseDescendant {
 
+	/**
+	 * The Enum SelectOption.
+	 */
 	public static enum SelectOption {
-		ACL, ACTIONS, AGENTS, DATABASE_SCRIPT, DATA_CONNECTIONS, DOCUMENTS, FOLDERS, FORMS, FRAMESETS, HELP_ABOUT, HELP_INDEX, HELP_USING, ICON, IMAGE_RESOURCES, JAVA_RESOURCES, MISC_CODE, MISC_FORMAT, MISC_INDEX, NAVIGATORS, OUTLINES, PAGES, PROFILES, REPLICATION_FORMULAS, SCRIPT_LIBRARIES, SHARED_FIELDS, STYLESHEETS, SUBFORMS, VIEWS;
+		
+		/** The acl. */
+		ACL, 
+ /** The actions. */
+ ACTIONS, 
+ /** The agents. */
+ AGENTS, 
+ /** The database script. */
+ DATABASE_SCRIPT, 
+ /** The data connections. */
+ DATA_CONNECTIONS, 
+ /** The documents. */
+ DOCUMENTS, 
+ /** The folders. */
+ FOLDERS, 
+ /** The forms. */
+ FORMS, 
+ /** The framesets. */
+ FRAMESETS, 
+ /** The help about. */
+ HELP_ABOUT, 
+ /** The help index. */
+ HELP_INDEX, 
+ /** The help using. */
+ HELP_USING, 
+ /** The icon. */
+ ICON, 
+ /** The image resources. */
+ IMAGE_RESOURCES, 
+ /** The java resources. */
+ JAVA_RESOURCES, 
+ /** The misc code. */
+ MISC_CODE, 
+ /** The misc format. */
+ MISC_FORMAT, 
+ /** The misc index. */
+ MISC_INDEX, 
+ /** The navigators. */
+ NAVIGATORS, 
+ /** The outlines. */
+ OUTLINES, 
+ /** The pages. */
+ PAGES, 
+ /** The profiles. */
+ PROFILES, 
+ /** The replication formulas. */
+ REPLICATION_FORMULAS, 
+ /** The script libraries. */
+ SCRIPT_LIBRARIES, 
+ /** The shared fields. */
+ SHARED_FIELDS, 
+ /** The stylesheets. */
+ STYLESHEETS, 
+ /** The subforms. */
+ SUBFORMS, 
+ /** The views. */
+ VIEWS;
 	}
 
 	/*

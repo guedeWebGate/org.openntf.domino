@@ -19,6 +19,7 @@ import java.util.Vector;
 
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface NotesCalendarNotice.
  */
@@ -121,6 +122,11 @@ public interface NotesCalendarNotice extends Base<lotus.domino.NotesCalendarNoti
 	@Override
 	public Vector<NotesCalendarNotice> getOutstandingInvitations();
 
+	/**
+	 * Gets the parent.
+	 * 
+	 * @return the parent
+	 */
 	public NotesCalendar getParent();
 
 	/*

@@ -18,6 +18,7 @@ package org.openntf.domino;
 import org.openntf.domino.types.DatabaseDescendant;
 import org.openntf.domino.types.Design;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Outline.
  */

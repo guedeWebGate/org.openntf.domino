@@ -29,6 +29,8 @@ import org.openntf.domino.utils.DominoUtils;
  * The Class RichTextTab.
  */
 public class RichTextTab extends Base<org.openntf.domino.RichTextTab, lotus.domino.RichTextTab> implements org.openntf.domino.RichTextTab {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(RichTextTab.class.getName());
 
 	/**
@@ -88,6 +90,9 @@ public class RichTextTab extends Base<org.openntf.domino.RichTextTab, lotus.domi
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getAncestorDocument().markDirty();
 	}

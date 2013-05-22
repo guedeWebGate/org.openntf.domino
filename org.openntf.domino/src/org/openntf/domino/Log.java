@@ -19,6 +19,7 @@ import java.util.Vector;
 
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Log nnables you to record actions and errors that take place during a program's execution. You can record actions and
  * errors in
@@ -70,9 +71,8 @@ public interface Log extends Base<lotus.domino.Log>, lotus.domino.Log, org.openn
 
 	/**
 	 * The name that identifies the agent whose actions and errors you're logging. The name is the same as the name specified with
-	 * {@link Session#createLog}.
 	 * 
-	 * @return The name of the log object.
+	 * @return The name of the log object. {@link Session#createLog}.
 	 * @since lotus.domino 4.5.0
 	 */
 	@Override

@@ -1,5 +1,17 @@
-/**
+/*
+ * Copyright OpenNTF 2013
  * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
  */
 package org.openntf.domino.design.impl;
 
@@ -21,21 +33,39 @@ import org.openntf.domino.utils.xml.XMLDocument;
 import org.openntf.domino.utils.xml.XMLNode;
 import org.xml.sax.SAXException;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author jgallagher
+ * The Class AbstractDesignBase.
  * 
+ * @author jgallagher
  */
 public abstract class AbstractDesignBase implements DesignBase {
+	
+	/** The Constant log_. */
 	@SuppressWarnings("unused")
 	private static final Logger log_ = Logger.getLogger(AbstractDesignBase.class.getName());
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The document_. */
 	private Document document_;
+	
+	/** The dxl_. */
 	private XMLDocument dxl_;
 
+	/** The title_. */
 	private String title_ = null;
+	
+	/** The aliases_. */
 	private List<String> aliases_ = null;
 
+	/**
+	 * Instantiates a new abstract design base.
+	 * 
+	 * @param document
+	 *            the document
+	 */
 	public AbstractDesignBase(final Document document) {
 		document_ = document;
 	}
@@ -166,6 +196,9 @@ public abstract class AbstractDesignBase implements DesignBase {
 		return this.getAncestorDatabase().getAncestorSession();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.design.DesignBase#save()
+	 */
 	public void save() {
 		DxlImporter importer = getAncestorSession().createDxlImporter();
 		importer.setDesignImportOption(DxlImporter.DesignImportOption.REPLACE_ELSE_CREATE);
@@ -181,10 +214,18 @@ public abstract class AbstractDesignBase implements DesignBase {
 		document_ = database.getDocumentByID(noteId);
 	}
 
+	/**
+	 * Gets the flags.
+	 * 
+	 * @return the flags
+	 */
 	protected String getFlags() {
 		return document_.getItemValueString("$Flags");
 	}
 
+	/**
+	 * Fetch title.
+	 */
 	@SuppressWarnings("unchecked")
 	private void fetchTitle() {
 		// Sometimes $TITLE is a multi-value field of title + aliases.
@@ -215,6 +256,11 @@ public abstract class AbstractDesignBase implements DesignBase {
 
 	}
 
+	/**
+	 * Gets the dxl.
+	 * 
+	 * @return the dxl
+	 */
 	protected XMLDocument getDxl() {
 		if (dxl_ == null) {
 			dxl_ = new XMLDocument();
@@ -234,6 +280,13 @@ public abstract class AbstractDesignBase implements DesignBase {
 		return dxl_;
 	}
 
+	/**
+	 * Gets the dxl node.
+	 * 
+	 * @param xpathString
+	 *            the xpath string
+	 * @return the dxl node
+	 */
 	protected XMLNode getDxlNode(final String xpathString) {
 		try {
 			return getDxl().selectSingleNode(xpathString);

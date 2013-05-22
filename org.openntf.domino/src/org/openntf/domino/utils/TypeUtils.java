@@ -1,5 +1,17 @@
-/**
+/*
+ * Copyright OpenNTF 2013
  * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
  */
 package org.openntf.domino.utils;
 
@@ -20,13 +32,28 @@ import org.openntf.domino.exceptions.UnimplementedException;
 import org.openntf.domino.impl.DateTime;
 import org.openntf.domino.impl.Name;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author nfreeman
+ * The Enum TypeUtils.
  * 
+ * @author nfreeman
  */
 public enum TypeUtils {
 	;
 
+	/**
+	 * Item value to class.
+	 * 
+	 * @param <T>
+	 *            the generic type
+	 * @param doc
+	 *            the doc
+	 * @param itemName
+	 *            the item name
+	 * @param T
+	 *            the t
+	 * @return the t
+	 */
 	public static <T> T itemValueToClass(Document doc, String itemName, Class<?> T) {
 		String noteid = doc.getNoteID();
 		boolean hasItem = doc.hasItem(itemName);
@@ -52,6 +79,17 @@ public enum TypeUtils {
 		return itemValueToClass(doc.getFirstItem(itemName), T);
 	}
 
+	/**
+	 * Item value to class.
+	 * 
+	 * @param <T>
+	 *            the generic type
+	 * @param item
+	 *            the item
+	 * @param T
+	 *            the t
+	 * @return the t
+	 */
 	@SuppressWarnings("rawtypes")
 	public static <T> T itemValueToClass(Item item, Class<?> T) {
 		// Object o = item.getAncestorDocument().getItemValue(item.getName());
@@ -71,6 +109,19 @@ public enum TypeUtils {
 		return result;
 	}
 
+	/**
+	 * Vector to class.
+	 * 
+	 * @param <T>
+	 *            the generic type
+	 * @param v
+	 *            the v
+	 * @param T
+	 *            the t
+	 * @param session
+	 *            the session
+	 * @return the t
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <T> T vectorToClass(Vector v, Class<?> T, Session session) {
 		Object result = null;
@@ -125,6 +176,13 @@ public enum TypeUtils {
 		return (T) result;
 	}
 
+	/**
+	 * To boolean.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 */
 	public static boolean toBoolean(Object value) {
 		if (value instanceof String) {
 			char[] c = ((String) value).toCharArray();
@@ -144,6 +202,13 @@ public enum TypeUtils {
 		}
 	}
 
+	/**
+	 * To int.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the int
+	 */
 	public static int toInt(Object value) {
 		if (value instanceof Integer) {
 			return ((Integer) value).intValue();
@@ -154,6 +219,13 @@ public enum TypeUtils {
 		}
 	}
 
+	/**
+	 * To double.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the double
+	 */
 	public static double toDouble(Object value) {
 		if (value instanceof Integer) {
 			return ((Integer) value).doubleValue();
@@ -164,6 +236,13 @@ public enum TypeUtils {
 		}
 	}
 
+	/**
+	 * To long.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the long
+	 */
 	public static long toLong(Object value) {
 		if (value instanceof Integer) {
 			return ((Integer) value).longValue();
@@ -174,6 +253,13 @@ public enum TypeUtils {
 		}
 	}
 
+	/**
+	 * To short.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the short
+	 */
 	public static short toShort(Object value) {
 		if (value instanceof Integer) {
 			return ((Integer) value).shortValue();
@@ -185,6 +271,13 @@ public enum TypeUtils {
 
 	}
 
+	/**
+	 * To float.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the float
+	 */
 	public static float toFloat(Object value) {
 		if (value instanceof Integer) {
 			return ((Integer) value).floatValue();
@@ -196,6 +289,15 @@ public enum TypeUtils {
 
 	}
 
+	/**
+	 * To primitive.
+	 * 
+	 * @param values
+	 *            the values
+	 * @param ctype
+	 *            the ctype
+	 * @return the object
+	 */
 	public static Object toPrimitive(Vector<Object> values, Class<?> ctype) {
 		if (ctype.isPrimitive()) {
 			throw new DataNotCompatibleException(ctype.getName() + " is not a primitive type.");
@@ -225,6 +327,15 @@ public enum TypeUtils {
 		throw new DataNotCompatibleException("");
 	}
 
+	/**
+	 * Join.
+	 * 
+	 * @param values
+	 *            the values
+	 * @param separator
+	 *            the separator
+	 * @return the string
+	 */
 	public static String join(Collection<Object> values, String separator) {
 		if (values == null)
 			return "";
@@ -238,10 +349,28 @@ public enum TypeUtils {
 		return sb.toString();
 	}
 
+	/**
+	 * Join.
+	 * 
+	 * @param values
+	 *            the values
+	 * @return the string
+	 */
 	public static String join(Collection<Object> values) {
 		return join(values, ", ");
 	}
 
+	/**
+	 * To primitive array.
+	 * 
+	 * @param values
+	 *            the values
+	 * @param ctype
+	 *            the ctype
+	 * @return the object
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static Object toPrimitiveArray(Vector<Object> values, Class<?> ctype) throws DataNotCompatibleException {
 		Object result = null;
 		int size = values.size();
@@ -300,6 +429,15 @@ public enum TypeUtils {
 		return result;
 	}
 
+	/**
+	 * To date.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the date
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static Date toDate(Object value) throws DataNotCompatibleException {
 		if (value == null)
 			return null;
@@ -323,6 +461,15 @@ public enum TypeUtils {
 		}
 	}
 
+	/**
+	 * To dates.
+	 * 
+	 * @param vector
+	 *            the vector
+	 * @return the date[]
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static Date[] toDates(Collection<Object> vector) throws DataNotCompatibleException {
 		if (vector == null)
 			return null;
@@ -335,6 +482,17 @@ public enum TypeUtils {
 		return result;
 	}
 
+	/**
+	 * To date times.
+	 * 
+	 * @param vector
+	 *            the vector
+	 * @param session
+	 *            the session
+	 * @return the org.openntf.domino. date time[]
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static org.openntf.domino.DateTime[] toDateTimes(Collection<Object> vector, org.openntf.domino.Session session)
 			throws DataNotCompatibleException {
 		if (vector == null)
@@ -348,6 +506,17 @@ public enum TypeUtils {
 		return result;
 	}
 
+	/**
+	 * To names.
+	 * 
+	 * @param vector
+	 *            the vector
+	 * @param session
+	 *            the session
+	 * @return the org.openntf.domino. name[]
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static org.openntf.domino.Name[] toNames(Collection<Object> vector, org.openntf.domino.Session session)
 			throws DataNotCompatibleException {
 		if (vector == null)
@@ -361,6 +530,15 @@ public enum TypeUtils {
 		return result;
 	}
 
+	/**
+	 * To strings.
+	 * 
+	 * @param vector
+	 *            the vector
+	 * @return the string[]
+	 * @throws DataNotCompatibleException
+	 *             the data not compatible exception
+	 */
 	public static String[] toStrings(Collection<Object> vector) throws DataNotCompatibleException {
 		if (vector == null)
 			return null;

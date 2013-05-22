@@ -50,21 +50,50 @@ import org.openntf.domino.utils.TypeUtils;
  * The Class Document.
  */
 public class Document extends Base<org.openntf.domino.Document, lotus.domino.Document> implements org.openntf.domino.Document {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(Document.class.getName());
 
+	/**
+	 * The Enum RemoveType.
+	 */
 	public static enum RemoveType {
-		SOFT_FALSE, SOFT_TRUE, HARD_FALSE, HARD_TRUE;
+		
+		/** The soft false. */
+		SOFT_FALSE, 
+ /** The soft true. */
+ SOFT_TRUE, 
+ /** The hard false. */
+ HARD_FALSE, 
+ /** The hard true. */
+ HARD_TRUE;
 	}
 
+	/** The remove type_. */
 	private RemoveType removeType_;
 
+	/** The is dirty_. */
 	private boolean isDirty_ = false;
+	
+	/** The noteid_. */
 	private String noteid_;
+	
+	/** The unid_. */
 	private String unid_;
+	
+	/** The is new_. */
 	private boolean isNew_;
+	
+	/** The is queued_. */
 	private boolean isQueued_ = false;
+	
+	/** The is remove queued_. */
 	private boolean isRemoveQueued_ = false;
+	
+	/** The should write item meta_. */
 	private boolean shouldWriteItemMeta_ = false; // TODO NTF create rules for making this true
+	
+	/** The should resurrect_. */
 	private boolean shouldResurrect_ = false;
 
 	// NTF - these are immutable by definition, so we should just copy it when we read in the doc
@@ -550,6 +579,7 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return null;
 	}
 
+	/** The entity cache_. */
 	private final transient Map<String, MIMEEntity> entityCache_ = new HashMap<String, MIMEEntity>();
 
 	/*
@@ -831,6 +861,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 	 * If the item does exist, then we get it's value and attempt a conversion. If the data cannot be converted, we throw an Exception
 	 */
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.Document#getItemValue(java.lang.String, java.lang.Class)
+	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getItemValue(String name, Class<?> T) throws ItemNotFoundException, DataNotCompatibleException {
 		// TODO NTF - Add type conversion extensibility of some kind, maybe attached to the Database or the Session
@@ -860,6 +893,13 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/**
+	 * Gets the item value mime.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return the item value mime
+	 */
 	private Object getItemValueMIME(String name) {
 		Object resultObj = null;
 		try {
@@ -1158,6 +1198,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return (Database) super.getParent();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.Document#getParentDocument()
+	 */
 	public Document getParentDocument() {
 		return this.getParentDatabase().getDocumentByUNID(this.getParentDocumentUNID());
 	}
@@ -1362,6 +1405,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.Document#hasMIMEEntity(java.lang.String)
+	 */
 	public boolean hasMIMEEntity(String name) {
 		boolean result = false;
 		Session session = this.getAncestorSession();
@@ -2039,6 +2085,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return null;
 	}
 
+	/**
+	 * Write item info.
+	 */
 	private void writeItemInfo() {
 		if (this.shouldWriteItemMeta_) {
 			Map<String, Map<String, Serializable>> itemInfo = getItemInfo();
@@ -2055,8 +2104,14 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/** The item info_. */
 	private Map<String, Map<String, Serializable>> itemInfo_;
 
+	/**
+	 * Gets the item info.
+	 * 
+	 * @return the item info
+	 */
 	public Map<String, Map<String, Serializable>> getItemInfo() {
 		// TODO NTF make this optional
 		if (itemInfo_ == null) {
@@ -2468,6 +2523,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		isDirty_ = true;
 		if (!isQueued_) {
@@ -2479,6 +2537,11 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/**
+	 * Queue remove.
+	 * 
+	 * @return true, if successful
+	 */
 	private boolean queueRemove() {
 		if (!isRemoveQueued_) {
 			DatabaseTransaction txn = getParentDatabase().getTransaction();
@@ -2494,10 +2557,16 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/**
+	 * Clear dirty.
+	 */
 	void clearDirty() {
 		isDirty_ = false;
 	}
 
+	/**
+	 * Rollback.
+	 */
 	public void rollback() {
 		if (removeType_ != null)
 			removeType_ = null;
@@ -2520,10 +2589,18 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.Document#isDirty()
+	 */
 	public boolean isDirty() {
 		return isDirty_;
 	}
 
+	/**
+	 * Force delegate remove.
+	 * 
+	 * @return true, if successful
+	 */
 	public boolean forceDelegateRemove() {
 		boolean result = false;
 		RemoveType type = removeType_;
@@ -2543,6 +2620,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Base#getDelegate()
+	 */
 	@Override
 	protected lotus.domino.Document getDelegate() {
 		lotus.domino.Document d = super.getDelegate();
@@ -2556,6 +2636,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return super.getDelegate();
 	}
 
+	/**
+	 * Resurrect.
+	 */
 	private void resurrect() {
 		if (noteid_ != null) {
 			try {
@@ -2617,16 +2700,25 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 	 * Map methods
 	 */
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#clear()
+	 */
 	@Override
 	public void clear() {
 		throw new UnsupportedOperationException();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#containsKey(java.lang.Object)
+	 */
 	@Override
 	public boolean containsKey(Object key) {
 		return this.hasItem(key == null ? null : String.valueOf(key));
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#containsValue(java.lang.Object)
+	 */
 	@Override
 	public boolean containsValue(Object value) {
 		// God, I hope nobody ever actually uses this method
@@ -2639,12 +2731,18 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#entrySet()
+	 */
 	@Override
 	public Set<java.util.Map.Entry<String, Object>> entrySet() {
 		// TODO Implement a "viewing" Set and Map.Entry for this or throw an UnsupportedOperationException
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#get(java.lang.Object)
+	 */
 	@Override
 	public Object get(Object key) {
 		if (key == null) {
@@ -2665,17 +2763,26 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#isEmpty()
+	 */
 	@Override
 	public boolean isEmpty() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#keySet()
+	 */
 	@Override
 	public Set<String> keySet() {
 		// TODO Implement a "viewing" Set for this or throw an UnsupportedOperationException
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#put(java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public Object put(String key, Object value) {
 		if (key != null) {
@@ -2688,6 +2795,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#putAll(java.util.Map)
+	 */
 	@Override
 	public void putAll(Map<? extends String, ? extends Object> m) {
 		for (Map.Entry<? extends String, ? extends Object> entry : m.entrySet()) {
@@ -2697,6 +2807,9 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		this.save();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#remove(java.lang.Object)
+	 */
 	@Override
 	public Object remove(Object key) {
 		if (key != null) {
@@ -2708,11 +2821,17 @@ public class Document extends Base<org.openntf.domino.Document, lotus.domino.Doc
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#size()
+	 */
 	@Override
 	public int size() {
 		return this.getItems().size();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Map#values()
+	 */
 	@Override
 	public Collection<Object> values() {
 		// TODO Implement a "viewing" collection for this or throw an UnsupportedOperationException

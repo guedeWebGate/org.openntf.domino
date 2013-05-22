@@ -17,22 +17,40 @@ package org.openntf.domino;
 
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface RichTextStyle.
  */
 public interface RichTextStyle extends Base<lotus.domino.RichTextStyle>, lotus.domino.RichTextStyle, org.openntf.domino.ext.RichTextStyle,
 		SessionDescendant {
 
+	/**
+	 * The Enum BoldStyle.
+	 */
 	public static enum BoldStyle {
 
-		ISBN_9780133258936(0), ISBN_9780132618311(1);
+		/** The ISB n_9780133258936. */
+		ISBN_9780133258936(0), /** The ISB n_9780132618311. */
+ ISBN_9780132618311(1);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new bold style.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private BoldStyle(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}

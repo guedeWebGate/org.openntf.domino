@@ -19,22 +19,48 @@ import java.util.Vector;
 
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface RichTextParagraphStyle.
  */
 public interface RichTextParagraphStyle extends Base<lotus.domino.RichTextParagraphStyle>, lotus.domino.RichTextParagraphStyle,
 		org.openntf.domino.ext.RichTextParagraphStyle, SessionDescendant {
 
+	/**
+	 * The Enum Align.
+	 */
 	public static enum Align {
-		CENTER(RichTextParagraphStyle.ALIGN_CENTER), FULL(RichTextParagraphStyle.ALIGN_FULL), LEFT(RichTextParagraphStyle.ALIGN_LEFT), NOWRAP(
-				RichTextParagraphStyle.ALIGN_NOWRAP), RIGHT(RichTextParagraphStyle.ALIGN_RIGHT);
+		
+		/** The center. */
+		CENTER(RichTextParagraphStyle.ALIGN_CENTER), 
+ /** The full. */
+ FULL(RichTextParagraphStyle.ALIGN_FULL), 
+ /** The left. */
+ LEFT(RichTextParagraphStyle.ALIGN_LEFT), 
+ /** The nowrap. */
+ NOWRAP(
+				RichTextParagraphStyle.ALIGN_NOWRAP), 
+ /** The right. */
+ RIGHT(RichTextParagraphStyle.ALIGN_RIGHT);
 
+		/** The value_. */
 		private final int value_;
 
+		/**
+		 * Instantiates a new align.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 		private Align(int value) {
 			value_ = value;
 		}
 
+		/**
+		 * Gets the value.
+		 * 
+		 * @return the value
+		 */
 		public int getValue() {
 			return value_;
 		}

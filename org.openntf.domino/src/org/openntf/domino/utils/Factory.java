@@ -37,8 +37,10 @@ import org.openntf.domino.types.SessionDescendant;
 public enum Factory {
 	;
 
+	/** The Constant VERSION. */
 	public static final String VERSION = "Milestone2";
 
+	/** The current session holder_. */
 	private static ThreadLocal<Session> currentSessionHolder_ = new ThreadLocal<Session>() {
 		/*
 		 * (non-Javadoc)
@@ -74,6 +76,8 @@ public enum Factory {
 
 		/**
 		 * Increment.
+		 * 
+		 * @return the int
 		 */
 		public int increment() {
 			int result = get() + 1;
@@ -83,6 +87,8 @@ public enum Factory {
 
 		/**
 		 * Decrement.
+		 * 
+		 * @return the int
 		 */
 		public int decrement() {
 			int result = get() - 1;
@@ -119,6 +125,8 @@ public enum Factory {
 
 	/**
 	 * Count auto recycle.
+	 * 
+	 * @return the int
 	 */
 	public static int countAutoRecycle() {
 		if (TRACE_COUNTERS) {
@@ -146,6 +154,11 @@ public enum Factory {
 		return recycleErrCounter.get().intValue();
 	}
 
+	/**
+	 * Gets the run context.
+	 * 
+	 * @return the run context
+	 */
 	public static RunContext getRunContext() {
 		// TODO finish this implementation, which needs a lot of work.
 		RunContext result = RunContext.UNKNOWN;
@@ -404,6 +417,8 @@ public enum Factory {
 	 * 
 	 * @param values
 	 *            the values
+	 * @param session
+	 *            the session
 	 * @return the java.util. vector
 	 */
 	public static java.util.Vector<Object> wrapColumnValues(Collection<?> values, org.openntf.domino.Session session) {
@@ -497,14 +512,28 @@ public enum Factory {
 		return currentSessionHolder_.get();
 	}
 
+	/**
+	 * Sets the session.
+	 * 
+	 * @param session
+	 *            the new session
+	 */
 	public static void setSession(lotus.domino.Session session) {
 		currentSessionHolder_.set((Session) fromLotus(session, org.openntf.domino.Session.class, null));
 	}
 
+	/**
+	 * Clear session.
+	 */
 	public static void clearSession() {
 		currentSessionHolder_.set(null);
 	}
 
+	/**
+	 * Gets the session full access.
+	 * 
+	 * @return the session full access
+	 */
 	public static org.openntf.domino.Session getSessionFullAccess() {
 		try {
 			lotus.domino.Session s = lotus.domino.NotesFactory.createSessionWithFullAccess();
@@ -515,6 +544,11 @@ public enum Factory {
 		return null;
 	}
 
+	/**
+	 * Gets the trusted session.
+	 * 
+	 * @return the trusted session
+	 */
 	public static org.openntf.domino.Session getTrustedSession() {
 		try {
 			lotus.domino.Session s = lotus.domino.NotesFactory.createTrustedSession();

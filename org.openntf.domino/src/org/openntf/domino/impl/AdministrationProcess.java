@@ -485,6 +485,9 @@ public class AdministrationProcess extends Base<org.openntf.domino.Administratio
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.types.SessionDescendant#getAncestorSession()
+	 */
 	@Override
 	public Session getAncestorSession() {
 		return this.getParent();

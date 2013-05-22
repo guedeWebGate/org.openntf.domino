@@ -58,6 +58,7 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 		};
 	};
 
+	/** The cpp_object. */
 	private long cpp_object = 0l;
 
 	// /** The reference bag. */
@@ -176,6 +177,12 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 
 	}
 
+	/**
+	 * Sets the delegate.
+	 * 
+	 * @param delegate
+	 *            the new delegate
+	 */
 	void setDelegate(D delegate) {
 
 		delegate_ = delegate;
@@ -220,6 +227,10 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 
 	/**
 	 * Drain queue.
+	 * 
+	 * @param cppid
+	 *            the cppid
+	 * @return the int
 	 */
 	public static int drainQueue(long cppid) {
 		int result = 0;
@@ -235,6 +246,8 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 
 	/**
 	 * Finalize queue.
+	 * 
+	 * @return the int
 	 */
 	public static int finalizeQueue() {
 		int result = 0;
@@ -478,6 +491,17 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 		throw new IllegalArgumentException();
 	}
 
+	/**
+	 * To domino friendly.
+	 * 
+	 * @param values
+	 *            the values
+	 * @param context
+	 *            the context
+	 * @return the vector
+	 * @throws IllegalArgumentException
+	 *             the illegal argument exception
+	 */
 	protected static Vector<Object> toDominoFriendly(Collection<?> values, Base<?, ?> context) throws IllegalArgumentException {
 		Vector<Object> result = new Vector<Object>();
 		for (Object value : values) {
@@ -543,6 +567,12 @@ public abstract class Base<T extends org.openntf.domino.Base<D>, D extends lotus
 
 	}
 
+	/**
+	 * Enc_recycle.
+	 * 
+	 * @param o
+	 *            the o
+	 */
 	public static void enc_recycle(Object o) {
 		// NTF this is for recycling of encapsulated objects like DateTime and Name
 		if (o instanceof Collection) {

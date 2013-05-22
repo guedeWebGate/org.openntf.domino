@@ -1,3 +1,18 @@
+/*
+ * Copyright OpenNTF 2013
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
+ */
 package org.openntf.domino.graph;
 
 import java.util.ArrayList;
@@ -16,27 +31,65 @@ import com.tinkerpop.blueprints.util.DefaultVertexQuery;
 import com.tinkerpop.blueprints.util.MultiIterable;
 import com.tinkerpop.blueprints.util.VerticesFromEdgesIterable;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DominoVertex.
+ */
 public class DominoVertex extends DominoElement implements Vertex {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(DominoVertex.class.getName());
+	
+	/** The Constant GRAPH_TYPE_VALUE. */
 	public static final String GRAPH_TYPE_VALUE = "OpenVertex";
+	
+	/** The Constant IN_NAME. */
 	public static final String IN_NAME = "_OPEN_IN";
+	
+	/** The Constant OUT_NAME. */
 	public static final String OUT_NAME = "_OPEN_OUT";
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The in dirty_. */
 	private transient boolean inDirty_ = false;
+	
+	/** The in edges_. */
 	private Set<String> inEdges_;
+	
+	/** The out dirty_. */
 	private transient boolean outDirty_ = false;
+	
+	/** The out edges_. */
 	private Set<String> outEdges_;
 
+	/**
+	 * Instantiates a new domino vertex.
+	 * 
+	 * @param parent
+	 *            the parent
+	 * @param doc
+	 *            the doc
+	 */
 	public DominoVertex(DominoGraph parent, org.openntf.domino.Document doc) {
 		super(parent, doc);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Vertex#addEdge(java.lang.String, com.tinkerpop.blueprints.Vertex)
+	 */
 	@Override
 	public Edge addEdge(String label, Vertex vertex) {
 		return parent_.addEdge(null, this, vertex, label);
 	}
 
+	/**
+	 * Adds the in edge.
+	 * 
+	 * @param edge
+	 *            the edge
+	 */
 	void addInEdge(Edge edge) {
 		if (!getInEdges().contains((String) edge.getId())) {
 			getParent().startTransaction();
@@ -46,6 +99,12 @@ public class DominoVertex extends DominoElement implements Vertex {
 		// setProperty(DominoVertex.IN_NAME, inEdges_);
 	}
 
+	/**
+	 * Adds the out edge.
+	 * 
+	 * @param edge
+	 *            the edge
+	 */
 	void addOutEdge(Edge edge) {
 		if (!getOutEdges().contains((String) edge.getId())) {
 			getParent().startTransaction();
@@ -55,12 +114,20 @@ public class DominoVertex extends DominoElement implements Vertex {
 		// setProperty(DominoVertex.OUT_NAME, outEdges_);
 	}
 
+	/**
+	 * Gets the both edges.
+	 * 
+	 * @return the both edges
+	 */
 	public java.util.Set<String> getBothEdges() {
 		Set<String> result = getInEdges();
 		result.addAll(getOutEdges());
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Vertex#getEdges(com.tinkerpop.blueprints.Direction, java.lang.String[])
+	 */
 	@Override
 	public Iterable<Edge> getEdges(Direction direction, String... labels) {
 		if (direction == Direction.IN) {
@@ -72,6 +139,11 @@ public class DominoVertex extends DominoElement implements Vertex {
 		}
 	}
 
+	/**
+	 * Gets the in edges.
+	 * 
+	 * @return the in edges
+	 */
 	@SuppressWarnings("unchecked")
 	public Set<String> getInEdges() {
 		if (inEdges_ == null) {
@@ -103,6 +175,11 @@ public class DominoVertex extends DominoElement implements Vertex {
 		return inEdges_;
 	}
 
+	/**
+	 * Gets the out edges.
+	 * 
+	 * @return the out edges
+	 */
 	@SuppressWarnings("unchecked")
 	public Set<String> getOutEdges() {
 		if (outEdges_ == null) {
@@ -123,6 +200,9 @@ public class DominoVertex extends DominoElement implements Vertex {
 		return outEdges_;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Vertex#getVertices(com.tinkerpop.blueprints.Direction, java.lang.String[])
+	 */
 	@Override
 	public Iterable<Vertex> getVertices(Direction direction, String... labels) {
 		if (direction == Direction.BOTH) {
@@ -135,11 +215,20 @@ public class DominoVertex extends DominoElement implements Vertex {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Vertex#query()
+	 */
 	@Override
 	public VertexQuery query() {
 		return new DefaultVertexQuery(this);
 	}
 
+	/**
+	 * Removes the edge.
+	 * 
+	 * @param edge
+	 *            the edge
+	 */
 	public void removeEdge(Edge edge) {
 		getParent().startTransaction();
 		getInEdges().remove(edge.getId());
@@ -148,6 +237,9 @@ public class DominoVertex extends DominoElement implements Vertex {
 		outDirty_ = true;
 	}
 
+	/**
+	 * Write edges.
+	 */
 	void writeEdges() {
 		if (inDirty_) {
 			setProperty(DominoVertex.IN_NAME, inEdges_);

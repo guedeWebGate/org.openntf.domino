@@ -31,6 +31,8 @@ import org.openntf.domino.utils.Factory;
  */
 public class RichTextDoclink extends Base<org.openntf.domino.RichTextDoclink, lotus.domino.RichTextDoclink> implements
 		org.openntf.domino.RichTextDoclink {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(RichTextDoclink.class.getName());
 
 	/**
@@ -270,6 +272,9 @@ public class RichTextDoclink extends Base<org.openntf.domino.RichTextDoclink, lo
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getAncestorDocument().markDirty();
 	}

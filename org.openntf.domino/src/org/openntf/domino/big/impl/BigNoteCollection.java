@@ -1,5 +1,17 @@
-/**
+/*
+ * Copyright OpenNTF 2013
  * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
  */
 package org.openntf.domino.big.impl;
 
@@ -24,15 +36,28 @@ import org.openntf.domino.View;
 import org.openntf.domino.annotations.Incomplete;
 import org.openntf.domino.utils.Factory;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author nfreeman
+ * The Class BigNoteCollection.
  * 
+ * @author nfreeman
  */
 @Incomplete
 public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollection {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(BigNoteCollection.class.getName());
+	
+	/** The id map_. */
 	private Map<String, int[]> idMap_;
 
+	/**
+	 * Gets the address.
+	 * 
+	 * @param db
+	 *            the db
+	 * @return the address
+	 */
 	public static String getAddress(final Database db) {
 		String result;
 		if ("".equals(db.getServer())) {
@@ -44,6 +69,13 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		return result;
 	}
 
+	/**
+	 * Gets the address.
+	 * 
+	 * @param doc
+	 *            the doc
+	 * @return the address
+	 */
 	public static String getAddress(final Document doc) {
 		final Database db = doc.getAncestorDatabase();
 		String result = getAddress(db);
@@ -51,6 +83,13 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		return result;
 	}
 
+	/**
+	 * Gets the server name.
+	 * 
+	 * @param address
+	 *            the address
+	 * @return the server name
+	 */
 	public static String getServerName(final String address) {
 		final int bangbang = address.indexOf("!!");
 		if (bangbang > 0) {
@@ -60,6 +99,13 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * Gets the replica id.
+	 * 
+	 * @param address
+	 *            the address
+	 * @return the replica id
+	 */
 	public static String getReplicaId(final String address) {
 		final int bangbang = address.indexOf("!!");
 		if (bangbang > 0) {
@@ -69,6 +115,13 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * Gets the noteid.
+	 * 
+	 * @param address
+	 *            the address
+	 * @return the noteid
+	 */
 	public static String getNoteid(final String address) {
 		final int bangbang = address.indexOf("!!");
 		if (bangbang > 0) {
@@ -78,6 +131,19 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * Gets the document.
+	 * 
+	 * @param session
+	 *            the session
+	 * @param server
+	 *            the server
+	 * @param replid
+	 *            the replid
+	 * @param noteid
+	 *            the noteid
+	 * @return the document
+	 */
 	public static Document getDocument(final Session session, final String server, final String replid, final String noteid) {
 		final Database db = session.getDatabase("", "");
 		db.openByReplicaID(server, replid);
@@ -90,15 +156,38 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * The Class DocumentIterator.
+	 */
 	public static class DocumentIterator implements Iterator<Document> {
+		
+		/** The coll_. */
 		private final BigNoteCollection coll_;
+		
+		/** The key iterator_. */
 		private Iterator<String> keyIterator_;
+		
+		/** The completed keys_. */
 		private final Set<String> completedKeys_ = new HashSet<String>();
+		
+		/** The current key_. */
 		private String currentKey_;
+		
+		/** The current ints_. */
 		private int[] currentInts_;
+		
+		/** The current int length_. */
 		private int currentIntLength_;
+		
+		/** The current pos_. */
 		private int currentPos_;
 
+		/**
+		 * Instantiates a new document iterator.
+		 * 
+		 * @param coll
+		 *            the coll
+		 */
 		DocumentIterator(BigNoteCollection coll) {
 			coll_ = coll;
 		}
@@ -129,6 +218,11 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 			return result;
 		}
 
+		/**
+		 * Gets the next ints.
+		 * 
+		 * @return the next ints
+		 */
 		private int[] getNextInts() {
 			int length = 0;
 			String key = null;
@@ -182,6 +276,11 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		return set.iterator();
 	}
 
+	/**
+	 * Documents.
+	 * 
+	 * @return the iterator
+	 */
 	public Iterator<Document> documents() {
 		return new DocumentIterator(this);
 	}
@@ -231,20 +330,44 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		add(filepath, nid);
 	}
 
+	/**
+	 * Adds the.
+	 * 
+	 * @param nc
+	 *            the nc
+	 */
 	public void add(final NoteCollection nc) {
 		String filepath = getAddress(nc.getAncestorDatabase());
 		add(filepath, nc.getNoteIDs());
 	}
 
+	/**
+	 * Adds the.
+	 * 
+	 * @param dc
+	 *            the dc
+	 */
 	public void add(final DocumentCollection dc) {
 		add(Factory.toNoteCollection(dc));
 	}
 
+	/**
+	 * Adds the.
+	 * 
+	 * @param doc
+	 *            the doc
+	 */
 	public void add(final Document doc) {
 		final String filepath = getAddress(doc.getAncestorDatabase());
 		add(filepath, doc.getNoteID());
 	}
 
+	/**
+	 * Adds the.
+	 * 
+	 * @param view
+	 *            the view
+	 */
 	public void add(final View view) {
 		final String filepath = getAddress(view.getAncestorDatabase());
 		add(filepath, view.getDocument().getNoteID());
@@ -294,6 +417,13 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * Gets the note ids.
+	 * 
+	 * @param key
+	 *            the key
+	 * @return the note ids
+	 */
 	public int[] getNoteIds(String key) {
 		Map<String, int[]> map = getIdMap();
 		synchronized (map) {
@@ -301,6 +431,11 @@ public class BigNoteCollection implements org.openntf.domino.big.BigNoteCollecti
 		}
 	}
 
+	/**
+	 * Gets the id map.
+	 * 
+	 * @return the id map
+	 */
 	private Map<String, int[]> getIdMap() {
 		if (idMap_ == null) {
 			idMap_ = new LinkedHashMap<String, int[]>();

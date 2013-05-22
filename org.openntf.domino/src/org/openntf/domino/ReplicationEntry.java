@@ -17,6 +17,7 @@ package org.openntf.domino;
 
 import org.openntf.domino.types.DatabaseDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface ReplicationEntry.
  */

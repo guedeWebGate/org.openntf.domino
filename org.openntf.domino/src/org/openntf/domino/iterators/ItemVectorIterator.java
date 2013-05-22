@@ -26,8 +26,6 @@ import org.openntf.domino.impl.ItemVector;
 /**
  * The Class VectorIterator.
  * 
- * @param <T>
- *            the generic type
  */
 public class ItemVectorIterator extends AbstractDominoListIterator<Item> {
 
@@ -45,8 +43,10 @@ public class ItemVectorIterator extends AbstractDominoListIterator<Item> {
 	/**
 	 * Instantiates a new document iterator.
 	 * 
-	 * @param collection
-	 *            the collection
+	 * @param document
+	 *            the document
+	 * @param itemVector
+	 *            the item vector
 	 */
 	public ItemVectorIterator(Document document, ItemVector itemVector) {
 		super(document);
@@ -112,8 +112,8 @@ public class ItemVectorIterator extends AbstractDominoListIterator<Item> {
 	/**
 	 * Sets the id array.
 	 * 
-	 * @param idArray
-	 *            the new id array
+	 * @param names
+	 *            the new names
 	 */
 	protected void setNames(String[] names) {
 		names_ = names;

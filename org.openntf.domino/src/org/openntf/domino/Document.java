@@ -22,6 +22,7 @@ import java.util.Vector;
 
 import org.openntf.domino.types.DatabaseDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Document.
  */

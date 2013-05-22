@@ -172,6 +172,9 @@ public class EmbeddedObject extends Base<org.openntf.domino.EmbeddedObject, lotu
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.EmbeddedObject#getParentDocument()
+	 */
 	public Document getParentDocument() {
 		org.openntf.domino.Base<?> parent = super.getParent();
 		if (parent instanceof org.openntf.domino.RichTextItem) {
@@ -180,6 +183,11 @@ public class EmbeddedObject extends Base<org.openntf.domino.EmbeddedObject, lotu
 		return (Document) parent;
 	}
 
+	/**
+	 * Gets the parent database.
+	 * 
+	 * @return the parent database
+	 */
 	public org.openntf.domino.Database getParentDatabase() {
 		return getParentDocument().getParentDatabase();
 	}
@@ -328,6 +336,9 @@ public class EmbeddedObject extends Base<org.openntf.domino.EmbeddedObject, lotu
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getParentDocument().markDirty();
 	}

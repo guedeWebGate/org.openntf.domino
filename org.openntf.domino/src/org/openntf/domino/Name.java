@@ -18,6 +18,7 @@ package org.openntf.domino;
 import org.openntf.domino.types.Encapsulated;
 import org.openntf.domino.types.SessionDescendant;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Name represents a user or server name.
  * <p>

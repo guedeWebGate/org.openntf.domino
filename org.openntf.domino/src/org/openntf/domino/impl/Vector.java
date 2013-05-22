@@ -37,6 +37,8 @@ import org.openntf.domino.iterators.VectorIterator;
  * 
  */
 public class Vector<E> extends java.util.Vector<E> implements List<E> {
+	
+	/** The delegate_. */
 	private final List<E> delegate_;
 
 	/** The Constant serialVersionUID. */
@@ -69,6 +71,11 @@ public class Vector<E> extends java.util.Vector<E> implements List<E> {
 		delegate_ = source;
 	}
 
+	/**
+	 * Gets the delegate.
+	 * 
+	 * @return the delegate
+	 */
 	public List<E> getDelegate() {
 		return delegate_;
 	}

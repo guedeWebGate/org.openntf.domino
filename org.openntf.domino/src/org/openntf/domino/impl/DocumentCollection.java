@@ -728,16 +728,27 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return new DocumentIterator(this);
 	}
 
+	/**
+	 * Gets the parent database.
+	 * 
+	 * @return the parent database
+	 */
 	public org.openntf.domino.Database getParentDatabase() {
 		return getParent();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#add(java.lang.Object)
+	 */
 	@Override
 	public boolean add(org.openntf.domino.Document doc) {
 		this.addDocument(doc);
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#addAll(java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(Collection<? extends org.openntf.domino.Document> docs) {
 		if (docs instanceof Base<?, ?>) {
@@ -750,6 +761,9 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#clear()
+	 */
 	@Override
 	public void clear() {
 		org.openntf.domino.Document iconNote = this.getParentDatabase().getDocumentByID("FFFF0010");
@@ -757,6 +771,9 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		this.remove(iconNote);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#contains(java.lang.Object)
+	 */
 	@Override
 	public boolean contains(Object value) {
 		if (value instanceof Integer) {
@@ -769,6 +786,9 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#containsAll(java.util.Collection)
+	 */
 	@Override
 	public boolean containsAll(Collection<?> docs) {
 		if (docs == null) {
@@ -782,11 +802,17 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#isEmpty()
+	 */
 	@Override
 	public boolean isEmpty() {
 		return this.size() > 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#remove(java.lang.Object)
+	 */
 	@Override
 	public boolean remove(Object doc) {
 		if (doc instanceof lotus.domino.Document) {
@@ -796,6 +822,9 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#removeAll(java.util.Collection)
+	 */
 	@Override
 	public boolean removeAll(Collection<?> docs) {
 		if (docs == null) {
@@ -810,21 +839,33 @@ public class DocumentCollection extends Base<org.openntf.domino.DocumentCollecti
 		return changed;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#retainAll(java.util.Collection)
+	 */
 	@Override
 	public boolean retainAll(Collection<?> docs) {
 		throw new UnsupportedOperationException();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#size()
+	 */
 	@Override
 	public int size() {
 		return this.getCount();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#toArray()
+	 */
 	@Override
 	public Object[] toArray() {
 		throw new UnsupportedOperationException();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Collection#toArray(T[])
+	 */
 	@Override
 	public <T> T[] toArray(T[] arg0) {
 		throw new UnsupportedOperationException();

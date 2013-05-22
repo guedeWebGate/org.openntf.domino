@@ -1,5 +1,17 @@
-/**
+/*
+ * Copyright OpenNTF 2013
  * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
  */
 package org.openntf.domino.ext;
 
@@ -24,14 +36,32 @@ import org.openntf.domino.DocumentCollection;
 import org.openntf.domino.design.DatabaseDesign;
 import org.openntf.domino.transactions.DatabaseTransaction;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author withersp
+ * The Interface Database.
  * 
+ * @author withersp
  */
 public interface Database {
 
+	/**
+	 * Compact with options.
+	 * 
+	 * @param options
+	 *            the options
+	 * @return the int
+	 */
 	public int compactWithOptions(EnumSet<CompactOption> options);
 
+	/**
+	 * Compact with options.
+	 * 
+	 * @param options
+	 *            the options
+	 * @param spaceThreshold
+	 *            the space threshold
+	 * @return the int
+	 */
 	public int compactWithOptions(EnumSet<CompactOption> options, String spaceThreshold);
 
 	/*
@@ -40,9 +70,18 @@ public interface Database {
 	 * 
 	 * @see java.util.Map#containsKey(java.lang.Object)
 	 */
+	/**
+	 * Contains key.
+	 * 
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 */
 	public boolean containsKey(Object key);
 
 	/**
+	 * Creates the document.
+	 * 
 	 * @param itemValues
 	 *            Map of fields and values with which to initialize a document
 	 * @return the newly created document
@@ -50,17 +89,35 @@ public interface Database {
 	public Document createDocument(Map<String, Object> itemValues);
 
 	/**
+	 * Creates the document.
+	 * 
 	 * @param keyValuePairs
 	 *            an object of key value pairs with which to initialize a document
 	 * @return the newly created document
 	 */
 	public Document createDocument(Object... keyValuePairs);
 
+	/**
+	 * Creates the ft index.
+	 * 
+	 * @param options
+	 *            the options
+	 * @param recreate
+	 *            the recreate
+	 */
 	public void createFTIndex(EnumSet<FTIndexOption> options, boolean recreate);
 
+	/**
+	 * Fixup.
+	 * 
+	 * @param options
+	 *            the options
+	 */
 	public void fixup(EnumSet<FixupOption> options);
 
 	/**
+	 * FT domain search.
+	 * 
 	 * @param query
 	 *            the query
 	 * @param maxDocs
@@ -81,6 +138,8 @@ public interface Database {
 			int start, int count, String entryForm);
 
 	/**
+	 * FT search.
+	 * 
 	 * @param query
 	 *            the query
 	 * @param maxDocs
@@ -94,6 +153,8 @@ public interface Database {
 	public DocumentCollection FTSearch(String query, int maxDocs, FTSortOption sortOpt, EnumSet<FTSearchOption> otherOpt);
 
 	/**
+	 * FT search range.
+	 * 
 	 * @param query
 	 *            the query
 	 * @param maxDocs
@@ -114,9 +175,18 @@ public interface Database {
 	 * 
 	 * @see java.util.Map#get(java.lang.Object)
 	 */
+	/**
+	 * Gets the.
+	 * 
+	 * @param key
+	 *            the key
+	 * @return the document
+	 */
 	public Document get(Object key);
 
 	/**
+	 * Gets the design.
+	 * 
 	 * @return A DatabaseDesign object representing the various design elements of this database.
 	 */
 	public DatabaseDesign getDesign();
@@ -151,11 +221,29 @@ public interface Database {
 	 */
 	public Document getDocumentByKey(Serializable key, boolean createOnFail);
 
+	/**
+	 * Gets the modified documents.
+	 * 
+	 * @param since
+	 *            the since
+	 * @param noteClass
+	 *            the note class
+	 * @return the modified documents
+	 */
 	public DocumentCollection getModifiedDocuments(lotus.domino.DateTime since, ModifiedDocClass noteClass);
 
+	/**
+	 * Gets the option.
+	 * 
+	 * @param optionName
+	 *            the option name
+	 * @return the option
+	 */
 	public boolean getOption(DBOption optionName);
 
 	/**
+	 * Grant access.
+	 * 
 	 * @param name
 	 *            name of a user to grant access to
 	 * @param level
@@ -163,9 +251,17 @@ public interface Database {
 	 */
 	public void grantAccess(String name, ACL.Level level);
 
+	/**
+	 * Sets the fT index frequency.
+	 * 
+	 * @param frequency
+	 *            the new fT index frequency
+	 */
 	public void setFTIndexFrequency(FTIndexFrequency frequency);
 
 	/**
+	 * Sets the option.
+	 * 
 	 * @param optionName
 	 *            DBOption option name
 	 * @param flag
@@ -174,14 +270,26 @@ public interface Database {
 	public void setOption(DBOption optionName, boolean flag);
 
 	/**
+	 * Sign.
+	 * 
 	 * @param documentType
 	 *            sign document type
 	 */
 	public void sign(SignDocType documentType);
 
+	/**
+	 * Sign.
+	 * 
+	 * @param documentType
+	 *            the document type
+	 * @param existingSigsOnly
+	 *            the existing sigs only
+	 */
 	public void sign(SignDocType documentType, boolean existingSigsOnly);
 
 	/**
+	 * Sign.
+	 * 
 	 * @param documentType
 	 *            sign document type
 	 * @param existingSigsOnly
@@ -192,6 +300,8 @@ public interface Database {
 	public void sign(SignDocType documentType, boolean existingSigsOnly, String name);
 
 	/**
+	 * Sign.
+	 * 
 	 * @param documentType
 	 *            sign document type
 	 * @param existingSigsOnly
@@ -204,18 +314,33 @@ public interface Database {
 	public void sign(SignDocType documentType, boolean existingSigsOnly, String name, boolean nameIsNoteid);
 
 	/**
+	 * Start transaction.
+	 * 
 	 * @return Database transaction
 	 */
 	public DatabaseTransaction startTransaction();
 
+	/**
+	 * Close transaction.
+	 */
 	public void closeTransaction();
 
 	/**
+	 * Gets the transaction.
+	 * 
 	 * @return Database transaction
 	 */
 	public DatabaseTransaction getTransaction();
 
+	/**
+	 * Gets the domino server.
+	 * 
+	 * @return the domino server
+	 */
 	public lotus.notes.addins.DominoServer getDominoServer();
 
+	/**
+	 * Refresh design.
+	 */
 	public void refreshDesign();
 }

@@ -57,13 +57,18 @@ import org.openntf.domino.Stream;
 import org.openntf.domino.exceptions.InvalidNotesUrlException;
 import org.openntf.domino.logging.LogUtils;
 
+// TODO: Auto-generated Javadoc
 //TODO: Auto-generated Javadoc
 /**
  * The Enum DominoUtils.
  */
 public enum DominoUtils {
 	;
+	
+	/** The Constant log_. */
 	private final static Logger log_ = Logger.getLogger("org.openntf.domino");
+	
+	/** The Constant logBackup_. */
 	private final static Logger logBackup_ = Logger.getLogger("com.ibm.xsp.domino");
 
 	/**
@@ -100,6 +105,13 @@ public enum DominoUtils {
 		return hashed;
 	}
 
+	/**
+	 * Checks if is number.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return true, if is number
+	 */
 	public static boolean isNumber(String value) {
 		boolean seenDot = false;
 		boolean seenExp = false;
@@ -528,6 +540,8 @@ public enum DominoUtils {
 	 *            the item name
 	 * @param compress
 	 *            the compress
+	 * @param headers
+	 *            the headers
 	 * @throws Throwable
 	 *             the throwable
 	 */
@@ -630,6 +644,8 @@ public enum DominoUtils {
 	}
 
 	/**
+	 * Gets the domino ini var.
+	 * 
 	 * @param propertyName
 	 *            String property to retrieve from notes.ini
 	 * @param defaultValue
@@ -646,7 +662,7 @@ public enum DominoUtils {
 	}
 
 	/**
-	 * Gets properties file and returns as an InputStream
+	 * Gets properties file and returns as an InputStream.
 	 * 
 	 * @param fileType
 	 *            int passed to switch statement. <br/>
@@ -686,6 +702,15 @@ public enum DominoUtils {
 		}
 	}
 
+	/**
+	 * Item from calendar.
+	 * 
+	 * @param item
+	 *            the item
+	 * @param cal
+	 *            the cal
+	 * @return the item
+	 */
 	public static Item itemFromCalendar(Item item, Calendar cal) {
 		DateTime dt = Factory.getSession(item).createDateTime(cal);
 		item.setDateTimeValue(dt);
@@ -693,6 +718,15 @@ public enum DominoUtils {
 		return item;
 	}
 
+	/**
+	 * Item from calendar append.
+	 * 
+	 * @param item
+	 *            the item
+	 * @param cal
+	 *            the cal
+	 * @return the item
+	 */
 	public static Item itemFromCalendarAppend(Item item, Calendar cal) {
 		DateTime dt = Factory.getSession(item).createDateTime(cal);
 		Vector<DateTime> v = item.getValueDateTimeArray();
@@ -702,6 +736,15 @@ public enum DominoUtils {
 		return item;
 	}
 
+	/**
+	 * Item from date.
+	 * 
+	 * @param item
+	 *            the item
+	 * @param cal
+	 *            the cal
+	 * @return the item
+	 */
 	public static Item itemFromDate(Item item, Date cal) {
 		DateTime dt = Factory.getSession(item).createDateTime(cal);
 		item.setDateTimeValue(dt);
@@ -709,6 +752,15 @@ public enum DominoUtils {
 		return item;
 	}
 
+	/**
+	 * Item from date append.
+	 * 
+	 * @param item
+	 *            the item
+	 * @param cal
+	 *            the cal
+	 * @return the item
+	 */
 	public static Item itemFromDateAppend(Item item, Date cal) {
 		DateTime dt = Factory.getSession(item).createDateTime(cal);
 		Vector<DateTime> v = item.getValueDateTimeArray();
@@ -717,6 +769,13 @@ public enum DominoUtils {
 		return item;
 	}
 
+	/**
+	 * Item to calendar.
+	 * 
+	 * @param item
+	 *            the item
+	 * @return the calendar
+	 */
 	public static Calendar itemToCalendar(Item item) {
 		DateTime dt = item.getDateTimeValue();
 		if (dt != null) {
@@ -726,6 +785,13 @@ public enum DominoUtils {
 		}
 	}
 
+	/**
+	 * Item to date.
+	 * 
+	 * @param item
+	 *            the item
+	 * @return the date
+	 */
 	public static Date itemToDate(Item item) {
 		DateTime dt = item.getDateTimeValue();
 		if (dt != null) {
@@ -735,11 +801,25 @@ public enum DominoUtils {
 		}
 	}
 
+	/**
+	 * Escape for formula string.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the string
+	 */
 	public static String escapeForFormulaString(final String value) {
 		// I wonder if this is sufficient escaping
 		return value.replace("\\", "\\\\").replace("\"", "\\\"");
 	}
 
+	/**
+	 * Checks if is serializable.
+	 * 
+	 * @param values
+	 *            the values
+	 * @return true, if is serializable
+	 */
 	public static boolean isSerializable(Collection<?> values) {
 		if (values == null)
 			return false;
@@ -758,6 +838,13 @@ public enum DominoUtils {
 		return result;
 	}
 
+	/**
+	 * To name string.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return the string
+	 */
 	public static String toNameString(Name name) {
 		String result = "";
 		if (!name.isHierarchical()) {
@@ -768,6 +855,13 @@ public enum DominoUtils {
 		return result;
 	}
 
+	/**
+	 * To comparable.
+	 * 
+	 * @param values
+	 *            the values
+	 * @return the collection
+	 */
 	@SuppressWarnings("rawtypes")
 	public static Collection<Comparable> toComparable(Collection<?> values) {
 		Collection<Serializable> colls = toSerializable(values);
@@ -784,6 +878,13 @@ public enum DominoUtils {
 		return result;
 	}
 
+	/**
+	 * To serializable.
+	 * 
+	 * @param values
+	 *            the values
+	 * @return the collection
+	 */
 	@SuppressWarnings("unchecked")
 	public static Collection<Serializable> toSerializable(Collection<?> values) {
 		if (DominoUtils.isSerializable(values))

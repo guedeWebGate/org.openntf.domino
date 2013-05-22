@@ -1,3 +1,18 @@
+/*
+ * Copyright OpenNTF 2013
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
+ */
 package org.openntf.domino.graph;
 
 import java.io.Serializable;
@@ -29,12 +44,25 @@ import com.tinkerpop.blueprints.TransactionalGraph;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.util.DefaultGraphQuery;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DominoGraph.
+ */
 public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(DominoGraph.class.getName());
 
+	/** The Constant EDGE_VIEW_NAME. */
 	public static final String EDGE_VIEW_NAME = "(_OPEN_Edges)";
+	
+	/** The Constant VERTEX_VIEW_NAME. */
 	public static final String VERTEX_VIEW_NAME = "(_OPEN_Vertices)";
+	
+	/** The Constant FEATURES. */
 	private static final Features FEATURES = new Features();
+	
+	/** The Constant COMPRESS_IDS. */
 	public static final boolean COMPRESS_IDS = false;
 
 	static {
@@ -73,19 +101,39 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 
 	}
 
+	/** The cache_. */
 	private java.util.Map<Object, DominoElement> cache_;
 
+	/** The database_. */
 	private transient org.openntf.domino.Database database_;
+	
+	/** The filepath_. */
 	private String filepath_;
+	
+	/** The server_. */
 	private String server_;
+	
+	/** The session_. */
 	private transient org.openntf.domino.Session session_;
 
+	/**
+	 * Instantiates a new domino graph.
+	 * 
+	 * @param database
+	 *            the database
+	 */
 	public DominoGraph(org.openntf.domino.Database database) {
 		setRawDatabase(database);
 		RunContext rc = Factory.getRunContext();
 		// System.out.println("Context: " + rc.toString());
 	}
 
+	/**
+	 * Sets the raw database.
+	 * 
+	 * @param database
+	 *            the new raw database
+	 */
 	public void setRawDatabase(org.openntf.domino.Database database) {
 		if (database != null) {
 			database_ = database;
@@ -95,6 +143,11 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		}
 	}
 
+	/**
+	 * Gets the cache.
+	 * 
+	 * @return the cache
+	 */
 	private java.util.Map<Object, DominoElement> getCache() {
 		if (cache_ == null) {
 			cache_ = new HashMap<Object, DominoElement>();
@@ -102,6 +155,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return cache_;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#addEdge(java.lang.Object, com.tinkerpop.blueprints.Vertex, com.tinkerpop.blueprints.Vertex, java.lang.String)
+	 */
 	@Override
 	public Edge addEdge(Object id, Vertex outVertex, Vertex inVertex, String label) {
 		startTransaction();
@@ -117,6 +173,19 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return ed;
 	}
 
+	/**
+	 * Gets the or add edge.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param outVertex
+	 *            the out vertex
+	 * @param inVertex
+	 *            the in vertex
+	 * @param label
+	 *            the label
+	 * @return the or add edge
+	 */
 	public Edge getOrAddEdge(Object id, Vertex outVertex, Vertex inVertex, String label) {
 		Edge result = null;
 		if (id == null) {
@@ -144,6 +213,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#addVertex(java.lang.Object)
+	 */
 	@Override
 	public Vertex addVertex(Object id) {
 		startTransaction();
@@ -154,10 +226,20 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/**
+	 * Gets the database.
+	 * 
+	 * @return the database
+	 */
 	private org.openntf.domino.Database getDatabase() {
 		return getRawSession().getDatabase(server_, filepath_);
 	}
 
+	/**
+	 * Gets the raw session.
+	 * 
+	 * @return the raw session
+	 */
 	public org.openntf.domino.Session getRawSession() {
 		if (session_ == null) {
 			session_ = Factory.getSession();
@@ -171,6 +253,11 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return session_;
 	}
 
+	/**
+	 * Gets the raw database.
+	 * 
+	 * @return the raw database
+	 */
 	public org.openntf.domino.Database getRawDatabase() {
 		if (database_ == null) {
 			database_ = getDatabase();
@@ -178,6 +265,15 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return database_;
 	}
 
+	/**
+	 * Gets the document.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param createOnFail
+	 *            the create on fail
+	 * @return the document
+	 */
 	private Document getDocument(Object id, boolean createOnFail) {
 		Document result = null;
 		String unid = "";
@@ -212,6 +308,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getEdge(java.lang.Object)
+	 */
 	@Override
 	public Edge getEdge(Object id) {
 		if (!getCache().containsKey(id)) {
@@ -228,6 +327,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return (Edge) getCache().get(id);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getEdges()
+	 */
 	@Override
 	public Iterable<Edge> getEdges() {
 		Set<Edge> result = new LinkedHashSet<Edge>();
@@ -239,12 +341,22 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getEdges(java.lang.String, java.lang.Object)
+	 */
 	@Override
 	public Iterable<Edge> getEdges(String key, Object value) {
 		// TODO
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Gets the edges from ids.
+	 * 
+	 * @param set
+	 *            the set
+	 * @return the edges from ids
+	 */
 	public Iterable<Edge> getEdgesFromIds(Set<String> set) {
 		Set<Edge> result = new HashSet<Edge>();
 		for (String id : set) {
@@ -253,6 +365,15 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/**
+	 * Gets the edges from ids.
+	 * 
+	 * @param set
+	 *            the set
+	 * @param labels
+	 *            the labels
+	 * @return the edges from ids
+	 */
 	public Iterable<Edge> getEdgesFromIds(Set<String> set, String... labels) {
 		Set<Edge> result = new HashSet<Edge>();
 		for (String id : set) {
@@ -267,6 +388,11 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/**
+	 * Gets the edge view.
+	 * 
+	 * @return the edge view
+	 */
 	private View getEdgeView() {
 		View result = getRawDatabase().getView(DominoGraph.EDGE_VIEW_NAME);
 		if (result == null) {
@@ -280,11 +406,17 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getFeatures()
+	 */
 	@Override
 	public Features getFeatures() {
 		return DominoGraph.FEATURES;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getVertex(java.lang.Object)
+	 */
 	@Override
 	public Vertex getVertex(Object id) {
 		if (!getCache().containsKey(id)) {
@@ -301,6 +433,11 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return (Vertex) getCache().get(id);
 	}
 
+	/**
+	 * Gets the vertex view.
+	 * 
+	 * @return the vertex view
+	 */
 	private View getVertexView() {
 		View result = getRawDatabase().getView(DominoGraph.VERTEX_VIEW_NAME);
 		if (result == null) {
@@ -314,6 +451,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getVertices()
+	 */
 	@Override
 	public Iterable<Vertex> getVertices() {
 		Set<Vertex> result = new LinkedHashSet<Vertex>();
@@ -324,17 +464,26 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#getVertices(java.lang.String, java.lang.Object)
+	 */
 	@Override
 	public Iterable<Vertex> getVertices(String key, Object value) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#query()
+	 */
 	@Override
 	public GraphQuery query() {
 		return new DefaultGraphQuery(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#removeEdge(com.tinkerpop.blueprints.Edge)
+	 */
 	@Override
 	public void removeEdge(Edge edge) {
 		startTransaction();
@@ -344,6 +493,9 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 		((DominoVertex) out).removeEdge(edge);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#removeVertex(com.tinkerpop.blueprints.Vertex)
+	 */
 	@Override
 	public void removeVertex(Vertex vertex) {
 		startTransaction();
@@ -354,19 +506,31 @@ public class DominoGraph implements Graph, MetaGraph, TransactionalGraph {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.Graph#shutdown()
+	 */
 	@Override
 	public void shutdown() {
 		commit();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tinkerpop.blueprints.MetaGraph#getRawGraph()
+	 */
 	@Override
 	public Object getRawGraph() {
 		return getRawDatabase();
 	}
 
+	/** The in transaction_. */
 	private boolean inTransaction_ = false;
+	
+	/** The txn_. */
 	private DatabaseTransaction txn_;
 
+	/**
+	 * Start transaction.
+	 */
 	public void startTransaction() {
 		if (!inTransaction_) {
 			// System.out.println("Not yet in transaction. Starting...");

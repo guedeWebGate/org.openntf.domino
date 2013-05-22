@@ -146,6 +146,9 @@ public class Replication extends Base<org.openntf.domino.Replication, lotus.domi
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Base#getParent()
+	 */
 	@Override
 	public Database getParent() {
 		return (Database) super.getParent();
@@ -383,6 +386,11 @@ public class Replication extends Base<org.openntf.domino.Replication, lotus.domi
 		}
 	}
 
+	/**
+	 * Gets the parent database.
+	 * 
+	 * @return the parent database
+	 */
 	public Database getParentDatabase() {
 		return getParent();
 	}

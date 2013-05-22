@@ -19,6 +19,7 @@ import java.util.Vector;
 
 import lotus.domino.NotesException;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface Base.
  * 

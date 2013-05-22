@@ -36,9 +36,12 @@ import org.xml.sax.InputSource;
  * The Class Item.
  */
 public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> implements org.openntf.domino.Item {
+	
+	/** The Constant log_. */
 	private static final Logger log_ = Logger.getLogger(Item.class.getName());
 
 	// TODO NTF - all setters should check to see if the new value is different from the old and only markDirty if there's a change
+	/** The name_. */
 	private String name_;
 
 	/**
@@ -482,6 +485,9 @@ public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> imple
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.ext.Item#getValues(java.lang.Class)
+	 */
 	public <T> T getValues(Class<?> T) {
 		return TypeUtils.itemValueToClass(this, T);
 	}
@@ -881,6 +887,12 @@ public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> imple
 		}
 	}
 
+	/**
+	 * Sets the values.
+	 * 
+	 * @param value
+	 *            the new values
+	 */
 	public void setValues(Object value) {
 		this.getParent().replaceItemValue(this.getName(), value);
 	}
@@ -899,6 +911,9 @@ public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> imple
 		}
 	}
 
+	/**
+	 * Mark dirty.
+	 */
 	void markDirty() {
 		getAncestorDocument().markDirty();
 	}
@@ -933,6 +948,9 @@ public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> imple
 		return this.getParent().getAncestorSession();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openntf.domino.impl.Base#getDelegate()
+	 */
 	@Override
 	protected lotus.domino.Item getDelegate() {
 		lotus.domino.Item item = super.getDelegate();
@@ -944,6 +962,9 @@ public class Item extends Base<org.openntf.domino.Item, lotus.domino.Item> imple
 		return super.getDelegate();
 	}
 
+	/**
+	 * Resurrect.
+	 */
 	private void resurrect() {
 		if (name_ != null) {
 			try {
