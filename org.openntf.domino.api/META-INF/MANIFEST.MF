@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: OpenNTF Domino API as Plugin
 Bundle-SymbolicName: org.openntf.domino.api;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.openntf.domion.api.Activator
+Bundle-Activator: org.openntf.domino.api.Activator
 Require-Bundle: org.eclipse.core.runtime,
  com.ibm.icu,
  com.ibm.commons
@@ -11,6 +11,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.openntf.domino,
  org.openntf.domino.annotations,
+ org.openntf.domino.api,
  org.openntf.domino.big,
  org.openntf.domino.big.impl,
  org.openntf.domino.design,
@@ -31,5 +32,4 @@ Export-Package: org.openntf.domino,
  org.openntf.domino.transactions,
  org.openntf.domino.types,
  org.openntf.domino.utils,
- org.openntf.domino.utils.xml,
- org.openntf.domion.api
+ org.openntf.domino.utils.xml

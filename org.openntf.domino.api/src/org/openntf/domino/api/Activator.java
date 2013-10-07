@@ -1,4 +1,4 @@
-package org.openntf.domion.api;
+package org.openntf.domino.api;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
