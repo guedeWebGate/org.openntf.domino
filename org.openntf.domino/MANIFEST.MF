@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Ant-Version: Apache Ant(TM) version 1.8.4 compiled on May 22 2012
-Created-By: JDK 1.6.0 (IBM Corporation)
+Ant-Version: Apache Ant(TM) version 1.8.2 compiled on December 20 2010
+Created-By: JDK 1.7.0_40 (Oracle Corporation)
 Implementation-Title: OpenNTF Domino API
-Implementation-Version: 1.0.0_20131002033115
+Implementation-Version: 1.0.0_20131015102453
 Implementation-Vendor: OpenNTF
 Implementation-Vendor-URL: http://www.openntf.org
-Built-By: Nathan T. Freeman
-Build-Date: 20131002033115
+Built-By: Administrator
+Build-Date: 20131015102453
 
