@@ -76,7 +76,6 @@ public class OpenntfViewNavigatorFactoryFactory implements ViewNavigatorFactory.
 			// }
 			return result;
 		}
-
 		// public OpenntfViewNavigatorFactory(ViewNavigatorFactory delegate) {
 		// delegate_ =delegate;
 		// System.out.println("OpenntfViewNavigatoryFactory constructed with delegate");
