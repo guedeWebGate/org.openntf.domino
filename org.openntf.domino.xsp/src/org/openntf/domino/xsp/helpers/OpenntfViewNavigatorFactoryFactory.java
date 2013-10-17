@@ -5,6 +5,8 @@ package org.openntf.domino.xsp.helpers;
 
 import java.util.logging.Logger;
 
+import javax.faces.context.FacesContext;
+
 import com.ibm.xsp.model.domino.ViewNavigatorEx;
 import com.ibm.xsp.model.domino.ViewNavigatorFactory;
 import com.ibm.xsp.model.domino.viewnavigator.NOIViewNavigatorEx;
@@ -63,7 +65,9 @@ public class OpenntfViewNavigatorFactoryFactory implements ViewNavigatorFactory.
 			ViewNavigatorEx result = super.createNavigator();
 			if (result instanceof NOIViewNavigatorEx9 || result instanceof NOIViewNavigatorEx) {
 				// System.out.println("Creating new OpenntfViewNavigatorEx");
-				result = new OpenntfViewNavigatorEx(this);
+				if (OpenntfDominoImplicitObjectFactory2.isAppGodMode(FacesContext.getCurrentInstance())) {
+					result = new OpenntfViewNavigatorEx(this);
+				}
 			} else {
 				// System.out.println("returning a " + result.getClass().getName());
 			}

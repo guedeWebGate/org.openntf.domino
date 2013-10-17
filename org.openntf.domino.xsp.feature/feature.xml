@@ -40,7 +40,7 @@ Declan Lynch, Paul Withers
          unpack="false"/>
 
    <plugin
-         id="org.openntf.domino.api"
+         id="org.openntf.domino.plugin"
          download-size="0"
          install-size="0"
          version="0.0.0"

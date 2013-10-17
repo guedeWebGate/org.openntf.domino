@@ -730,12 +730,17 @@ public enum Factory {
 		DominoUtils.setBubbleExceptions(null);
 	}
 
-	public static void terminate() {
+	public static lotus.domino.Session terminate() {
+		lotus.domino.Session result = null;
+		if (currentSessionHolder_.get() != null) {
+			result = (lotus.domino.Session) Base.getDelegate(currentSessionHolder_.get());
+		}
+		Base.drainQueue(0l);
 		clearSession();
 		clearClassLoader();
 		clearBubbleExceptions();
 		clearDominoGraph();
-		//		System.out.println("Terminating OpenNTF Factory");
+		return result;
 	}
 
 	/**
@@ -745,11 +750,18 @@ public enum Factory {
 	 */
 	public static org.openntf.domino.Session getSessionFullAccess() {
 		try {
-			lotus.domino.Session s = lotus.domino.NotesFactory.createSessionWithFullAccess();
-			return fromLotus(s, org.openntf.domino.Session.class, null);
-		} catch (lotus.domino.NotesException ne) {
-			ne.printStackTrace();
-			// DominoUtils.handleException(ne);
+			Object result = AccessController.doPrivileged(new PrivilegedExceptionAction<Object>() {
+				@Override
+				public Object run() throws Exception {
+					lotus.domino.Session s = lotus.domino.NotesFactory.createSessionWithFullAccess();
+					return fromLotus(s, org.openntf.domino.Session.class, null);
+				}
+			});
+			if (result instanceof org.openntf.domino.Session) {
+				return (org.openntf.domino.Session) result;
+			}
+		} catch (PrivilegedActionException e) {
+			DominoUtils.handleException(e);
 		}
 		return null;
 	}
@@ -761,10 +773,18 @@ public enum Factory {
 	 */
 	public static org.openntf.domino.Session getTrustedSession() {
 		try {
-			lotus.domino.Session s = lotus.domino.NotesFactory.createTrustedSession();
-			return fromLotus(s, org.openntf.domino.Session.class, null);
-		} catch (lotus.domino.NotesException ne) {
-			DominoUtils.handleException(ne);
+			Object result = AccessController.doPrivileged(new PrivilegedExceptionAction<Object>() {
+				@Override
+				public Object run() throws Exception {
+					lotus.domino.Session s = lotus.domino.NotesFactory.createTrustedSession();
+					return fromLotus(s, org.openntf.domino.Session.class, null);
+				}
+			});
+			if (result instanceof org.openntf.domino.Session) {
+				return (org.openntf.domino.Session) result;
+			}
+		} catch (PrivilegedActionException e) {
+			DominoUtils.handleException(e);
 		}
 		return null;
 	}

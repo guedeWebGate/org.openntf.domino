@@ -1,0 +1,7 @@
+bin
+bin-domino/*.class
+bin-tinkerpop/*.class
+Snap*
+core*
+javacore*
+/IBM_TECHNICAL_SUPPORT
